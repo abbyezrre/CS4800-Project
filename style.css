@@ -13,7 +13,7 @@
 
 .navbar {
     display: flex;
-    background-color:white;
+    background-color: white;
     height: 80px;
     margin-bottom: -22px;
 }
@@ -48,7 +48,7 @@
 
 .button {
     display: inline-block;
-    background-color:rgb(238, 238, 238);
+    background-color: rgb(238, 238, 238);
     text-decoration: none;
     color: black;
     text-align: center;
@@ -76,4 +76,9 @@
 .title-text {
     margin-bottom: 30px;
     padding: 20px;
+}
+
+.club-cards-container {
+    display: flex;
+    overflow-x: scroll;
 }
