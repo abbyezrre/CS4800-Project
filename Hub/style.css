@@ -43,6 +43,7 @@
     display: flex;
     justify-content: space-around;
     list-style-type: none;
+    border-radius: 5px;
 
 }
 
