@@ -1,0 +1,44 @@
+.loginBox{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: aqua;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+
+    min-height: 30vh;
+    min-width: 20%;
+
+    background-color: beige;
+
+    box-shadow: 15px;
+    border-radius: 20px;
+}
+
+
+/*sets font for header */
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*creates rounded edges on input boxes*/
+input{
+    box-shadow: 10px;
+    border-radius: 23x;
+   
+}
+
+/*creates rounded edges on button */
+button{
+    box-shadow: 10px;
+    border-radius: 20px;
+    background-color: plum;
+}
