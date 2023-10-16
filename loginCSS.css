@@ -3,8 +3,7 @@
     justify-content: center;
     align-content: center;
     min-height: 100vh;
-    min-width: 100vw;
-    background-color: aqua;
+    min-width: 100vw;;
 }
 
 .login{
@@ -40,5 +39,4 @@ input{
 button{
     box-shadow: 10px;
     border-radius: 20px;
-    background-color: plum;
 }
