@@ -21,11 +21,11 @@
   
   /* Style the search box inside the navigation bar */
   .search input[type=text] {
-    float: right;
+    float: left;
     padding: 6px;
     border: none;
-    margin-top: 10px;
-    margin-right: 16px;
+    margin-bottom: 8px;
+    margin-left: 16px;
     font-size: 17px;
   }
   
