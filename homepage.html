@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Feed Posting Form</title>
+        <link rel="stylesheet" href="home-style.css">
+       
+    </head>
+    <body>
+    
+        <h2>Post Your Feed</h2>
+    
+        <form id="feedForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="message">Feed:</label>
+            <textarea id="message" name="message" required></textarea>
+    
+            <button type="button" onclick="submitForm()">Post Feed</button>
+        </form>
+    
+        <!-- Feed container -->
+        <div id="feedContainer">
+            <!-- Posts will be dynamically added here -->
+        </div>
+    
+        <script>
+            function submitForm() {
+                var name = document.getElementById('name').value;
+                var message = document.getElementById('message').value;
+    
+                // Create a new post element
+                var postElement = document.createElement('div');
+                postElement.className = 'post';
+                postElement.innerHTML = '<strong>' + name + ':</strong> ' + message;
+    
+                // Append the post element to the feed container
+                document.getElementById('feedContainer').appendChild(postElement);
+    
+                // Clear the form fields
+                document.getElementById('name').value = '';
+                document.getElementById('message').value = '';
+            }
+        </script>
+    
+    </body>
+    </html>
+    
