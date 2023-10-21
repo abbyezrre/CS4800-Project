@@ -83,3 +83,7 @@
     display: flex;
     overflow-x: scroll;
 }
+
+.club-cards-container::-webkit-scrollbar-thumb {
+    background-color: red;
+}
