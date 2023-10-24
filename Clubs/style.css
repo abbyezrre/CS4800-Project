@@ -87,3 +87,17 @@
 .club-cards-container::-webkit-scrollbar-thumb {
     background-color: red;
 }
+
+.club-category {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.club-name {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.club-body {
+    color: rgb(88, 88, 88);
+}
