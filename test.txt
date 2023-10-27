@@ -1,4 +1,0 @@
-hi
-hey
-test
-hello world
