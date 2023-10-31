@@ -22,6 +22,7 @@ class FakeData:
         self.post_video = "video here"
         self.clubs = ["Gaming Club", "Computer Science"]
         self.search_club = ""
+        self.bio = "user bio here"
         
     # get full name
     def get_fullname(self):
@@ -79,6 +80,8 @@ class FakeData:
     def get_post_video(self):
         return self.post_video
     
+    def get_user_bio(self):
+        return self.bio
     
     
     # check if we have club 
