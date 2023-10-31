@@ -1,4 +1,11 @@
 class FakeData:
+
+    #include clubs connection with data
+    #include club activity 
+    #event with summary post
+    #place it is taking place
+    # club info 
+    
     def __init__(self):
         self.firstname = "John"
         self.lastname = "Smith"
@@ -85,6 +92,10 @@ fdb = FakeData()
 
     # Accessing variables
 
+        # DO NOT REMOVE: 
+        # password db: nJnreV9AdMHQoBs7
+        # mongodb+srv://iflores10:<password>@cluster0.skqqar6.mongodb.net/
+        # mongodb+srv://iflores10:nJnreV9AdMHQoBs7@cluster0.skqqar6.mongodb.net/
 
         
 print(fdb.get_fullname())
