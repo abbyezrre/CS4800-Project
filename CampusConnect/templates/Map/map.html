@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map</title>
     <link rel="stylesheet" href="../Clubs/style.css">
-    <link href="map.css" rel="stylesheet">
+    <link href="{% static 'css/map.css'%}" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar"> <!-- menu -->
             <ul class="list-items">
-                <li><img src="CSU_Stanislaus_seal.svg.png" class="logo"></li>
+                <li><img src= "{% static 'img/CSU_Stanislaus_seal.svg.png' %}" class="logo"></li>
                 <li><a href="homepage.html" class="button">Home</a></li>
                 <li><a href="../Clubs/hub.html" class="button">Hub</a></li>
                 <li><a href="#" class="button">Events</a></li>
@@ -27,7 +28,7 @@
             <h1 class="title-text">Campus Map</h1>
             <div class="col-sm">
                 
-                <img src="map.png" class="map-img">
+                <img src="{% static 'img/map.png' %}" class="map-img">
             </div>
             <div class="search">
                 <input type="text" placeholder="Search..">
