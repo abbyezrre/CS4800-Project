@@ -23,4 +23,9 @@ from CampusConnect import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.map, name='map')
+   # path('clubs/'), blank.clubs, name='clubs'
+   # path('home/'), blank.home, name='home'
+   # path('map/'), blank.map, name='map'
+   # path('login/'), blank.login, name='login'
+   # path('signup/'), blank.signup, name='signup'
 ]
