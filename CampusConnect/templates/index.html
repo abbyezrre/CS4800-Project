@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="{% static 'css/index.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar"> <!-- menu -->
+            <ul class="list-items">
+                <li><a href="/home" class="button">Home</a></li>
+                <li><a href="/clubs" class="button">Clubs</a></li>
+                <li><a href="/events" class="button">Events</a></li>
+                <li><a href="/map" class="button">Map</a></li>
+            </ul>
+            <ul class="login-item">
+                <li><a href="/signin" class="button">Sign In</a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+
+            <div class="search">
+                <input type="text" placeholder="Search..">
+              </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
