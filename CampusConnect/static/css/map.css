@@ -1,43 +1,43 @@
 #root {
   margin: 0 auto;
-}
+  }
 
 .logo {
   width: 55px;
   margin-right: 10px;
-}
+  }
 
 .row {
   display: flex;
-}
+  }
 
 .navbar {
   display: flex;
   background-color: white;
   height: 80px;
   margin-bottom: -22px;
-}
+  }
 
 .main-content {
   background-color: rgb(219, 219, 219);
   margin-bottom: 80px;
-}
+  }
 
 .club-card {
   margin: 10px;
   background-color: rgb(240, 240, 240);
   padding: 15px;
   align-items: center;
-}
+  }
 
 .club-img {
   width: 200px !important;
-}
+  }
 
 .card-titles {
   margin-top: -20px;
   cursor: pointer;
-}
+  }
 
 .list-items {
   display: flex;
@@ -45,7 +45,7 @@
   list-style-type: none;
   border-radius: 5px;
 
-}
+  }
 
 .button {
   display: inline-block;
@@ -57,39 +57,39 @@
   width: 60px;
   height: 30px;
 
-}
+  }
 
 .button:hover {
   background-color: rgb(210, 21, 21);
   color: white;
-}
+  }
 
 .list-items li {
   margin-right: 0px;
 
-}
+  }
 
 .login-item {
   list-style-type: none;
   margin-left: 900px;
-}
+  }
 
 .title-text {
   margin-bottom: 30px;
   padding: 20px;
-}
+  }
 
 .club-cards-container {
   display: flex;
   overflow-x: scroll;
-}
+  }
 
 .club-cards-container::-webkit-scrollbar-thumb {
   background-color: red;
-}
+  }
 .map-img {
     width: 800px
-}
+  }
 
 .search {
     overflow: hidden;
@@ -97,7 +97,7 @@
   }
   
   /* Style the links inside the navigation bar */
-  .search a {
+.search a {
     float: left;
     display: block;
     color: black;
@@ -108,13 +108,13 @@
   }
   
   
-  /* Style the search box inside the navigation bar */
-  .search input[type=text] {
+    /* Style the search box inside the navigation bar */
+.search input[type=text] {
     float: left;
     padding: 6px;
     border: none;
     margin-bottom: 8px;
-    margin-left: 16px;
+    margin-right: 16px;
     font-size: 17px;
   }
   

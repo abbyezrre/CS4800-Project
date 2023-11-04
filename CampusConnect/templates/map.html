@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map</title>
-    <link rel="stylesheet" href="../Clubs/style.css">
+    <link href="{% static 'css/index.css'%}" rel="stylesheet">
     <link href="{% static 'css/map.css'%}" rel="stylesheet">
 </head>
 
@@ -15,13 +15,15 @@
         <nav class="navbar"> <!-- menu -->
             <ul class="list-items">
                 <li><img src= "{% static 'img/CSU_Stanislaus_seal.svg.png' %}" class="logo"></li>
-                <li><a href="homepage.html" class="button">Home</a></li>
-                <li><a href="../Clubs/hub.html" class="button">Hub</a></li>
+                <li><a href="/index" class="button">Home</a></li>
+                <li><a href="/clubs" class="button">Hub</a></li>
                 <li><a href="#" class="button">Events</a></li>
-                <li><a href="map.html" class="button">Map</a></li>
+                <li><a href="/map" class="button">Map</a></li>
+                <li><a href="/posting" class="button">Posting</a></li>
+
             </ul>
             <ul class="login-item">
-                <li><a href="../index.html" class="button">Sign In</a></li>
+                <li><a href="/signin" class="button">Sign In</a></li>
             </ul>
         </nav>
         <div class="main-content">
