@@ -20,18 +20,23 @@
         <!-- creates login child container-->
         <div class="login">
             <h1>Sign In</h1>
+            <form action="/signin" method="POST">
+                <!-- User input box-->
+                <input type="text" placeholder="username">
+                <br>
+            
+                <!--Password box-->
+                <input type="password" placeholder="password">
+                <br>
+                    
+                <!-- Sign in button-->
+                <button type="submit">Sign in</button>
+                <br>
+                <br>
 
-            <!-- User input box-->
-            <input type="text" placeholder="username">
-            <br>
-        
-            <!--Password box-->
-            <input type="password" placeholder="password">
-            <br>
-                
-            <!-- Sign in button-->
-            <button type="button">Sign in</button>
-    
+                Need an account?
+                <button type="button"><a href = "/signup">Sign Up</button>
+            </form>
         </div>
 
     </div>
