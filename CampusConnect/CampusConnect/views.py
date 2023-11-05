@@ -16,6 +16,13 @@ def clubs(request):
     return render(request, "hub.html")
 
 def post(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        message = request.POST['message']
+    
+    else:
+        messages.error(request, "Invalid Credentials")
+    
     return render(request, "posting.html")
 
 def signin(request):
