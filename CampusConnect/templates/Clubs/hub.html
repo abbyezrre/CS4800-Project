@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clubs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
 </head>
 
 <body>
@@ -13,10 +14,11 @@
         <nav class="navbar"> <!-- menu -->
             <ul class="list-items">
                 <li><img src="CSU_Stanislaus_seal.svg.png" class="logo"></li>
-                <li><a href="#" class="button">Home</a></li>
-                <li><a href="#" class="button">Hub</a></li>
+                <li><a href="/index" class="button">Home</a></li>
+                <li><a href="/clubs" class="button">Hub</a></li>
                 <li><a href="#" class="button">Events</a></li>
-                <li><a href="#" class="button">Map</a></li>
+                <li><a href="/map" class="button">Map</a></li>
+                <li><a href="/posting" class="button">Posting</a></li>
             </ul>
             <ul class="login-item">
                 <li><a href="#" class="button">Sign In</a></li>

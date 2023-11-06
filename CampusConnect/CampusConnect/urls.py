@@ -16,7 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from CampusConnect import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('index/', views.home, name='home'),
+    path('map/', views.map, name='map'),
+    path('signin/', views.signin, name='signin'),
+    path('signup/', views.signup, name='signup'),
+    path('clubs/', views.clubs, name='clubs'),
+    path('posting/', views.post, name='posting' ),
+     path('profile/', views.profile, name='profile' )
+   # path('map/'), blank.map, name='map'
+
 ]

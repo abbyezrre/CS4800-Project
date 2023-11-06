@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="{% static 'css/index.css'%}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar"> <!-- menu -->
+            <ul class="list-items">
+                <li><a href="/index" class="button">Home</a></li>
+                <li><a href="/clubs" class="button">Hub</a></li>
+                <li><a href="#" class="button">Events</a></li>
+                <li><a href="/map" class="button">Map</a></li>
+                <li><a href="/posting" class="button">Posting</a></li>
+            </ul>
+            <ul class="login-item">
+                <li><a href="/signin" class="button">Sign In</a></li>
+            </ul>
+             <!--ul class="profile-item">
+                <li><a href="/profile" class="button">Profile</a></li>
+            </ul--> <!-- waiting on sign in to finsih -->
+        </nav>
+        <div class="main-content">
+
+            <div class="search">
+                <input type="text" placeholder="Search..">
+              </div>
+            {% for message in messages%}
+
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong>Message:</strong> {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label ="Close"></button>
+                <span aria-hidden="true">&times;</span>
+            </div>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+            <h3>Hello {{fname}} </h3>
+
+            {% else %}
+            
+
+            {% endif %}
+
+            
+        </div>
+    </div>
+
+</body>
+
+</html>

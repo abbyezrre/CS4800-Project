@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in</title>
+
+    <!-- imports css sheet-->
+    <link href="{% static 'css/signin.css'%}" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- creates loginBox parent container -->
+    <div class="loginBox">
+        
+        <!-- creates login child container-->
+        <div class="login">
+            <h1>Sign In</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <!-- User input box-->
+                <input type="text" placeholder="username">
+                <br>
+            
+                <!--Password box-->
+                <input type="password" placeholder="password">
+                <br>
+                    
+                <!-- Sign in button-->
+                <button type="submit"><a href = "/index">Sign in</button></a>
+                <br>
+                <br>
+
+                Need an account?
+                <button type="button"><a href = "/signup">Sign Up</button></a>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>
