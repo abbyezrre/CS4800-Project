@@ -30,6 +30,5 @@ urlpatterns = [
     path('clubs/', views.clubs, name='clubs'),
     path('posting/', views.post, name='posting' ),
      path('profile/', views.profile, name='profile' )
-   # path('map/'), blank.map, name='map'
 
 ]

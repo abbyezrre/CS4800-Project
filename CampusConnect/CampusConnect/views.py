@@ -20,6 +20,9 @@ def post(request):
     if request.method == 'POST':
         name = request.POST['name']
         message = request.POST['message']
+        print(f"Name: {name}, Message: {message}")
+        
+        return redirect('home')
     
     else:
         messages.error(request, "Invalid Credentials")
