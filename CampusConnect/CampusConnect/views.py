@@ -3,6 +3,7 @@ from django.http import HttpRequest
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from CampusConnect.fakeB import FakeData
 
 def map(request):
     template = "map.html"
