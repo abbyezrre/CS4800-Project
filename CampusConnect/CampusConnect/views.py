@@ -10,7 +10,7 @@ def map(request):
 
 def home(request):
     return render(request, "index.html")
-    return render(request, "signin.html")
+
 
 def clubs(request):
     return render(request, "hub.html")
@@ -59,8 +59,7 @@ def signup(request):
         myuser.save()
         
         messages.success(request, "Your account has been created.")
-        
-        #TO DO: redirect back to signin on submitting form
+ 
         return redirect('signin')
         
         

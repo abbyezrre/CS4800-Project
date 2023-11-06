@@ -20,7 +20,8 @@
         <!-- creates login child container-->
         <div class="login">
             <h1>Sign In</h1>
-            <form action="/signin" method="POST">
+            <form action="" method="POST">
+                {% csrf_token %}
                 <!-- User input box-->
                 <input type="text" placeholder="username">
                 <br>
@@ -30,12 +31,12 @@
                 <br>
                     
                 <!-- Sign in button-->
-                <button type="submit">Sign in</button>
+                <button type="submit"><a href = "/index">Sign in</button></a>
                 <br>
                 <br>
 
                 Need an account?
-                <button type="button"><a href = "/signup">Sign Up</button>
+                <button type="button"><a href = "/signup">Sign Up</button></a>
             </form>
         </div>
 
