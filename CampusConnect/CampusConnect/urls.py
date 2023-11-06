@@ -28,8 +28,8 @@ urlpatterns = [
     path('signin/', views.signin, name='signin'),
     path('signup/', views.signup, name='signup'),
     path('clubs/', views.clubs, name='clubs'),
-    path('posting/', views.post, name='posting' )
-    
+    path('posting/', views.post, name='posting' ),
+     path('profile/', views.profile, name='profile' )
    # path('map/'), blank.map, name='map'
 
 ]
