@@ -111,7 +111,7 @@ class pullingUserInfo:
     
     # open image stored in database
     def get_image(self, username):
-        # filter for the info we need (assuming the field name is "image_data")
+        # filter for the info we need 
         field_filter = "image_data"
         # call the get_userInfo method
         image_data = self.get_userInfo(field_filter, username)
@@ -124,7 +124,16 @@ class pullingUserInfo:
             image = Image.open(BytesIO(decoded_image_data))
             image.show()
 
+   # method to return the bio
+    def get_bio(self, username): 
+        # filter of the info we need "bio"
+        fieldfilter = "bio"
+        # call the get_userInfo method
+        bio = self.get_userInfo(fieldfilter, username)
 
+        # return the result
+        return bio
+    
     
 
 

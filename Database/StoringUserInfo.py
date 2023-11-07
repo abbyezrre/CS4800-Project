@@ -21,6 +21,7 @@ class StoringUserInfo:
     self.age = ""
     self.username = ""
     self.password = ""
+    self.bio = ""
     self.image_data = None
     
 
@@ -52,6 +53,10 @@ class StoringUserInfo:
   # setter method for password
   def set_password(self, password):
     self.password = password
+    
+  # setter method for bio
+  def set_bio(self, bio):
+    self.bio = bio
 
   # method to create a new document in the MongoDB collection
   def create_new_document(self):
@@ -63,6 +68,7 @@ class StoringUserInfo:
         "username": self.username,
         "password": self.password,
         "age": self.age,
+        "bio": self.bio,
         "image_data": self.image_data
       }
 
