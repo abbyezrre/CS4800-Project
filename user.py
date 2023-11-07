@@ -1,3 +1,4 @@
+#helen
 
 # this class creates the user object and stores username, pass, email, etc.
 class User:
@@ -48,7 +49,7 @@ class User:
         return User()
 
         
-    #copy pasted from fakeB.py
+    #copy pasted from fakeB.py that isaac made
     
     # get full name
     def get_fullname(self):

@@ -14,7 +14,7 @@ def main():
             "elvin" : "basketB"
     """
 
-    #login testing
+    #login testing - helen
     loginTest = loginPage()
     loginTest.login()
 

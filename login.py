@@ -1,6 +1,7 @@
 
 from user import *
 
+#helen
 class loginPage:
     
     def __init__(self):
@@ -14,13 +15,15 @@ class loginPage:
         
         while self.loginStatus == False:
             userInputUsername = input("Enter your username: ")
+            
+            #verifyUser evaluates to True or false depending on if the userinput was found in the database
             verifyUser = self.user.findUser(userInputUsername)
             
             if verifyUser is True:
-                
                 userInputPassword = input("Enter your password: ")
                 if self.user.get_password() == userInputPassword:
                     print(f'You were successfully logged in {self.user.get_username()}!')
+                    #loginStatus evaluates to True and the while loop is ended
                     self.loginStatus = True
                 else:
                     print("Invalid password.")
