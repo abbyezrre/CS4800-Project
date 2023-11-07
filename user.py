@@ -1,5 +1,3 @@
-from fakeB import *
-
 
 # this class creates the user object and stores username, pass, email, etc.
 class User:
@@ -14,28 +12,41 @@ class User:
         self.signup_date = -99
         self.profile_name = ""
         self.bio = ""
-        self.database = FakeData()
         
-    def findUser(self, userLogin):
+        #creates a test dictionary of usernames and passwords for login functionality
+        self.validUsers = {
+            "johnsmith209" : "Password",
+            "budgie" : "parakeet1",
+            "superc0co" : "Isaac123",
+            "abbyeee" : "h00ray!", 
+            "kim" : "2bunny",
+            "elvin" : "basketB"
+        }
+        
+    #finds the user if key matches and updates values and returns true, otherwise returns false
+
+    def findUser(self, key):
         #TODO: Update with correct database function. Right now it is pulling from a made up username list in FakeB
-        # FOR NOW ONLY USE JOHN IN FAKEB username = "johnsmith209"
-        if userLogin in self.database.getUsernames():
-            #TODO: connect username to all other user info based on 
-            self.firstname = self.database.get_firstname()
-            self.lastname = self.database.get_lastname()
-            self.middlename = self.database.get_middlename()
-            self.username = self.database.get_username()
-            self.password = self.database.get_password()
-            self.user_email = self.database.get_useremail()
-            self.age = self.database.get_age()
-            self.signup_date = self.database.get_signin_date()
-            self.profile_name = self.database.get_profile_name()
-            self.bio = self.database.get_user_bio()
-            
-            #change return to return User object
-            return User()
+        if key in self.validUsers.keys():
+            #TODO: needs to be uncommented out when we have a full database
+            #self.firstname = self.database.get_firstname()
+            #self.lastname = self.database.get_lastname()  
+            #self.middlename = self.database.get_middlename()
+            self.username = key
+            self.password = self.validUsers[key]
+            #self.user_email = self.database.get_useremail()
+            #self.age = self.database.get_age()
+            #self.signup_date = self.database.get_signin_date()
+            #self.profile_name = self.database.get_profile_name()
+            #self.bio = self.database.get_user_bio()
+            return True
         else:
             return False
+    
+    #returns the user object after user/pass is modified
+    def returnUser(self):
+        return User()
+
         
     #copy pasted from fakeB.py
     

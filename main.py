@@ -1,14 +1,25 @@
-from fakeB import *
+
 from login import *
 from user import *
 
 
 def main():
-    test = User()
-    test.findUser("johnsmith209")
-    
-    if test is not None:
-        print(test.get_lastname())
+    """
+    demo1 login test using dictionary:         
+            "johnsmith209" : "Password",
+            "budgie" : "parakeet1",
+            "superc0co" : "Isaac123",
+            "abbyeee" : "h00ray!", 
+            "kim" : "2bunny",
+            "elvin" : "basketB"
+    """
+
+    #login testing
+    loginTest = loginPage()
+    loginTest.login()
+
 
 if __name__ == "__main__":
     main()
+
+    

@@ -4,28 +4,30 @@ from user import *
 class loginPage:
     
     def __init__(self):
-        self.username = username
-        self.password = password
+        self.loginStatus = False
         self.user = User()
-        
-        
-        
-    #verify the username exists by reading the database
-    #return user credentials if found, else return None
-    def verifyUser(self):
-        
-        pass
-    
-    def verifyPass(self):
-        pass
-    
+
+    # login function that prints success if user and pass are correct
+    # else prints invalid and prompts user to try again
     def login(self):
-        pass
-        """
-        if self.username in
+
+        
+        while self.loginStatus == False:
+            userInputUsername = input("Enter your username: ")
+            verifyUser = self.user.findUser(userInputUsername)
             
-        else:
-            print("Invalid credentials")
-        """
+            if verifyUser is True:
+                
+                userInputPassword = input("Enter your password: ")
+                if self.user.get_password() == userInputPassword:
+                    print(f'You were successfully logged in {self.user.get_username()}!')
+                    self.loginStatus = True
+                else:
+                    print("Invalid password.")
+            else:
+                print("Invalid username.")
+                
+            
+
 
         

@@ -23,11 +23,11 @@ class FakeData:
         self.clubs = ["Gaming Club", "Computer Science"]
         self.search_club = ""
         self.bio = "user bio here"
-        self.validUsers = ["johnsmith209", "budgie", "superc0co", "elvin", "kim", "abbyeee"]
+        
     
     #returns list of valid users
     def getUsernames(self):
-        return self.validUsers
+        return self.validUsers.keys()
     
     # get full name
     def get_fullname(self):
