@@ -1,4 +1,6 @@
 import pymongo
+import base64
+
 #Isaac Flores
 class StoringUserInfo:
 
@@ -19,6 +21,13 @@ class StoringUserInfo:
     self.age = ""
     self.username = ""
     self.password = ""
+    self.image_data = None
+    
+
+   # setter method for image data
+  def set_image(self, image_path):
+    with open(image_path, "rb") as image_file:
+      self.image_data = base64.b64encode(image_file.read()).decode("utf-8")
 
   # setter method for first name
   def set_firstname(self, firstname):
@@ -53,7 +62,8 @@ class StoringUserInfo:
         "middlename": self.middlename,
         "username": self.username,
         "password": self.password,
-        "age": self.age
+        "age": self.age,
+        "image_data": self.image_data
       }
 
     # insert the document into the collection
