@@ -6,7 +6,7 @@ from django.contrib import messages
 from CampusConnect.fakeB import FakeData
 
 user_posts = []
-
+# Abigail
 def map(request):
     template = "map.html"
     return render(request, template)
