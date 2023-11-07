@@ -42,7 +42,7 @@
         <label for="message">Feed:</label>
         <textarea id="message" name="message" required></textarea>
 
-        <button type="button">Post Feed</button>
+        <button type="button" onclick="submitForm()">Post Feed</button>
     </form>
 
     <!-- Feed container -->
@@ -51,7 +51,7 @@
     </div>
 
     <script>
-        /*function submitForm() {
+        function submitForm() {
             var name = document.getElementById('name').value;
             var message = document.getElementById('message').value;
 
@@ -66,7 +66,7 @@
             // Clear the form fields
             document.getElementById('name').value = '';
             document.getElementById('message').value = '';
-        }*/
+        }
     </script>
 
 </body>

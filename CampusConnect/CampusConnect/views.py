@@ -5,11 +5,14 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from CampusConnect.fakeB import FakeData
 
+user_posts = []
+
 def map(request):
     template = "map.html"
     return render(request, template)
 
 def home(request):
+    global user_post
     return render(request, "index.html")
 
 
@@ -21,11 +24,11 @@ def post(request):
         name = request.POST['name']
         message = request.POST['message']
         print(f"Name: {name}, Message: {message}")
-        
+
+        global user_post
+        user_post.append({'name': name, 'message': message})
+
         return redirect('home')
-    
-    else:
-        messages.error(request, "Invalid Credentials")
     
     return render(request, "posting.html")
 
