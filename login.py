@@ -1,14 +1,31 @@
-import django
-from fakeB import *
 
-print(django.get_version())
+from user import *
 
-""" 
 class loginPage:
+    
     def __init__(self):
-        # get user info
-        # user_database =
+        self.username = username
+        self.password = password
+        self.user = User()
         
-    def login():
-        username = 
-"""
+        
+        
+    #verify the username exists by reading the database
+    #return user credentials if found, else return None
+    def verifyUser(self):
+        
+        pass
+    
+    def verifyPass(self):
+        pass
+    
+    def login(self):
+        pass
+        """
+        if self.username in
+            
+        else:
+            print("Invalid credentials")
+        """
+
+        
