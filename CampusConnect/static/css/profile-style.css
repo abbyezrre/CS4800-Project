@@ -15,7 +15,7 @@
     justify-content: center;
 }
 .profile-box{
-    background: #ff574a;
+    /*background: red;*/
     text-align: center;
     padding: 40px 90px;
     color: #fff;
@@ -43,7 +43,7 @@
 }
 .profile-bottom{
     background: #fff;
-    color: #999;
+    color: #a92d2d;
     padding: 60px 0;
     margin-right: -90px;
     margin-left: -90px;
@@ -58,7 +58,7 @@
 }
 .profile-box button{
     background: #fff;
-    color: #ff574a;
+    color: rgb(162, 53, 53);
     border: none;
     outline: none;
     box-shadow: 0 5px 10px rgba(244, 67, 54, 0.5);
