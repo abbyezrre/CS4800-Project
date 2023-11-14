@@ -15,13 +15,20 @@
     justify-content: center;
 }
 .profile-box{
+<<<<<<< HEAD
     background: rgb(210, 21, 21);
+=======
+    background: #a92d2d;
+>>>>>>> c4c8d878f4597d31ed6fa69c1467882fed2b6740
     text-align: center;
     padding: 40px 90px;
     color: #fff;
     position: relative;
     border-radius: 20px;
+<<<<<<< HEAD
    
+=======
+>>>>>>> c4c8d878f4597d31ed6fa69c1467882fed2b6740
 }
 .menu-icon{
     width: 25px;
@@ -44,7 +51,11 @@
 }
 .profile-bottom{
     background: #fff;
+<<<<<<< HEAD
     color: rgb(210, 21, 21);
+=======
+    color: #a92d2d;
+>>>>>>> c4c8d878f4597d31ed6fa69c1467882fed2b6740
     padding: 60px 0;
     margin-right: -90px;
     margin-left: -90px;
@@ -59,15 +70,23 @@
 }
 .profile-box button{
     background: #fff;
+<<<<<<< HEAD
     color: rgb(210, 21, 21);
+=======
+    color: rgb(162, 53, 53);
+>>>>>>> c4c8d878f4597d31ed6fa69c1467882fed2b6740
     border: none;
     outline: none;
     box-shadow: 0 5px 10px rgba(244, 67, 54, 0.5);
     padding: 15px 60px;
     cursor: pointer;
     border-radius: 30px;
+<<<<<<< HEAD
     margin-top: 60px;
     margin-bottom: 60px;
+=======
+    margin-bottom: -50px;
+>>>>>>> c4c8d878f4597d31ed6fa69c1467882fed2b6740
     font-weight: 600;
     font-size: 16px;
 }
