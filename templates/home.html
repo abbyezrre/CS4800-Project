@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
 <html lang="en">
-{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="{% static 'css/index.css'%}" rel="stylesheet">
+    <link href="static/css/home.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,22 +33,18 @@
             <div class="search">
                 <input type="text" placeholder="Search..">
               </div>
-            {% for message in messages%}
 
-            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-                <strong>Message:</strong> {{message}}
+
+            <div class="alert alert-dismissible fade show" role="alert">
+                <strong>Message:</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label ="Close"></button>
                 <span aria-hidden="true">&times;</span>
             </div>
-            {% endfor %}
 
-            {% if user.is_authenticated %}
-            <h3>Hello {{fname}} </h3>
 
-            {% else %}
-            
 
-            {% endif %}
+            <h3>Hello </h3>
+
 
             
         </div>

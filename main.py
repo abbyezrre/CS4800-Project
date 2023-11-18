@@ -12,7 +12,6 @@ def main():
     loginTest.login()
 
 
-
 if __name__ == "__main__":
     main()
 
