@@ -2,6 +2,10 @@
     margin: 0 auto;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body,
 html {
     margin: 0;
@@ -89,7 +93,7 @@ html {
 
 .club-cards-container {
     display: flex;
-    overflow-x: scroll;
+
 }
 
 .club-cards-container::-webkit-scrollbar-thumb {
