@@ -137,7 +137,74 @@ class pullingUserInfo:
     
 
 
+#Isaac Flores
+class pullingMapInfo:
+     
+    def __init__(self):
+        # connect to MongoDB
+        self.client = pymongo.MongoClient("mongodb+srv://iflores10:nJnreV9AdMHQoBs7@cluster0.skqqar6.mongodb.net/")
 
+        # select the database
+        self.db = self.client["CampusConnect"]
+
+        # select the collection
+        self.collection = self.db["map"]
+        
+    def get_mapInfo(self, field, location):
+        # query to retrieve documents only with the first name isaac
+        query = {"location": location}
+        projection = {field:1}
+
+        # find documents in the collection based on the query
+        cursor = self.collection.find(query, projection)
+
+        for document in cursor:
+            return document[field]   
+        
+        # open image stored in database
+    def get_image(self, location):
+        # filter for the info we need 
+        field_filter = "image_data"
+        # call the get_userInfo method
+        image_data = self.get_mapInfo(field_filter, location)
+
+        if image_data:
+            # decode the base64 image data
+            decoded_image_data = base64.b64decode(image_data)
+
+            # open and display the image using PIL
+            image = Image.open(BytesIO(decoded_image_data))
+            image.show()
+
+    # method to return the age
+    def get_building(self, location): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "building"
+        # call the get_userInfo method
+        building = self.get_mapInfo(fieldfilter, location)
+
+        # return the result
+        return building
+    
+        # method to return the age
+    def get_rooomnumber(self, location): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "roomnumber"
+        # call the get_userInfo method
+        roomnumber = self.get_mapInfo(fieldfilter, location)
+
+        # return the result
+        return roomnumber
+    
+    def get_location(self, location): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "location"
+        # call the get_userInfo method
+        roomnumber = self.get_mapInfo(fieldfilter, location)
+
+        # return the result
+        return roomnumber
+    
         # # get only middle name
         # def get_middlename(self):
         #     return self.middlename

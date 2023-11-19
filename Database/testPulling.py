@@ -1,28 +1,50 @@
-from pullingUserInfo import pullingUserInfo
-from StoringUserInfo import StoringUserInfo
+#from pullingUserInfo import pullingUserInfo
+#from StoringUserInfo import StoringUserInfo
+from StoringUserInfo import storingMap
+from pullingUserInfo import pullingMapInfo
 from PIL import Image
 from io import BytesIO
+
+# USING THE STORING MAP------------------------
+# map_info = storingMap()
+
+# map_info.set_location("DBH 145")
+# map_info.set_building("Demergasso-Bava Hall")
+# map_info.set_roomnumber("145")
+# ig = r"c:\Users\isaac\OneDrive\Documents\CS4800-Project\CampusConnect\static\img\CSU_Stanislaus_seal.svg.png"
+# map_info.set_image(ig)
+
+# map_info.create_new_document()
+# END OF STORING MAP--------------------------
+
+# USING THE PULLMAPINFO------------
+user_info = pullingMapInfo()
+print(user_info.get_location("DBH 145"))
+print(user_info.get_building("DBH 145"))
+print(user_info.get_rooomnumber("DBH 145"))
+print(user_info.get_image("DBH 145"))
+
+
 #Isaac Flores
 # START - testing if I am able to pull information fromt he data base
 
 
-user_info = pullingUserInfo()
+#user_info = pullingUserInfo()
 
 # call the get_firstname method and print the result
-print(user_info.get_firstname("reydub"))
-print(user_info.get_lastname("reydub"))
-print(user_info.get_username("reydub"))
-print(user_info.get_password("reydub"))
-print(user_info.get_age("reydub"))
-print(user_info.get_fullname("reydub"))
-print(user_info.get_bio("reydub"))
-
+# print(user_info.get_firstname("reydub"))
+# print(user_info.get_lastname("reydub"))
+# print(user_info.get_username("reydub"))
+# print(user_info.get_password("reydub"))
+# print(user_info.get_age("reydub"))
+# print(user_info.get_fullname("reydub"))
+# print(user_info.get_bio("reydub"))
 # you can insert any other field to return all the data from that field 
 # Example: "age" will return a list of all the ages
-print(user_info.get_allFieldInfo("username")) 
+# print(user_info.get_allFieldInfo("username")) 
 
 # displays the CSU logo Image
-print(user_info.get_image("reydub"))
+#print(user_info.get_image("reydub"))
 
 
 # # END - pulling from the database
@@ -32,7 +54,9 @@ print(user_info.get_image("reydub"))
 #START - testing if I am able to store/ser information for new user
 
 # # create an instance of the class
-# user_info = StoringUserInfo()
+#user_info = StoringUserInfo()
+
+
 
 # # # set values using setter methods
 # user_info.set_firstname(input("First name: "))
@@ -49,6 +73,6 @@ print(user_info.get_image("reydub"))
 # user_info.set_image(ig)
 
 # # create a new document with the set values
-# user_info.create_new_document()
+#user_info.create_new_document()
 
 # # END - storing user

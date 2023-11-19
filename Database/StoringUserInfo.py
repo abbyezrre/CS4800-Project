@@ -76,5 +76,49 @@ class StoringUserInfo:
     result = self.collection.insert_one(new_document)
 
 
+class storingMap:
 
+  def __init__(self):
+    # connect to MongoDB
+    self.client = pymongo.MongoClient("mongodb+srv://iflores10:nJnreV9AdMHQoBs7@cluster0.skqqar6.mongodb.net/")  
 
+    # select the database
+    self.db = self.client["CampusConnect"] 
+
+    # select the collection
+    self.collection = self.db["map"] 
+
+    self.roomnumber = ""
+    self.building = ""
+    self.location = ""
+    self.image_data = None
+    
+  # setter method for image data
+  def set_image(self, image_path):
+    with open(image_path, "rb") as image_file:
+      self.image_data = base64.b64encode(image_file.read()).decode("utf-8")
+      
+  # setter method for building
+  def set_building(self, building):
+    self.building = building
+    
+  # setter method for roomnumber
+  def set_roomnumber(self, roomnumber):
+    self.roomnumber = roomnumber
+    
+  # setter method for location
+  def set_location(self, location):
+    self.location = location
+    
+  # method to create a new document in the MongoDB collection
+  def create_new_document(self):
+    # create a new document
+    new_document = {
+        "location": self.location,
+        "building": self.building,
+        "roomnumber": self.roomnumber,
+        "image_data": self.image_data
+      }
+
+    # insert the document into the collection
+    result = self.collection.insert_one(new_document)
