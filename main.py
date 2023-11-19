@@ -6,6 +6,7 @@ from user import *
 from signup import *
 
 
+
 def main():
     
     # test for signup and login - Abigail
@@ -17,6 +18,7 @@ def main():
         
         loginTest = loginPage()
         loginTest.login()
+        
     else:
         #login testing - helen
         loginTest = loginPage()
