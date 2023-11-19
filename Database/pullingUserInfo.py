@@ -176,30 +176,31 @@ class pullingMapInfo:
             image = Image.open(BytesIO(decoded_image_data))
             image.show()
 
-    # method to return the age
+    # method to return the building
     def get_building(self, location): 
         # filter of the info we need (this name as to how it is stored in the data base)
         fieldfilter = "building"
-        # call the get_userInfo method
+        # call the get_mapInfo method
         building = self.get_mapInfo(fieldfilter, location)
 
         # return the result
         return building
     
-        # method to return the age
+        # method to return the roomnumber
     def get_rooomnumber(self, location): 
         # filter of the info we need (this name as to how it is stored in the data base)
         fieldfilter = "roomnumber"
-        # call the get_userInfo method
+        # call the get_mapInfo method
         roomnumber = self.get_mapInfo(fieldfilter, location)
 
         # return the result
         return roomnumber
     
+    # method to return the location
     def get_location(self, location): 
         # filter of the info we need (this name as to how it is stored in the data base)
         fieldfilter = "location"
-        # call the get_userInfo method
+        # call the get_mapInfo method
         roomnumber = self.get_mapInfo(fieldfilter, location)
 
         # return the result
