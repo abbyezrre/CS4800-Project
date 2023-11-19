@@ -15,12 +15,13 @@
     justify-content: center;
 }
 .profile-box{
-    background: #ff574a;
+    background: rgb(210, 21, 21);
     text-align: center;
     padding: 40px 90px;
     color: #fff;
     position: relative;
     border-radius: 20px;
+   
 }
 .menu-icon{
     width: 25px;
@@ -43,7 +44,7 @@
 }
 .profile-bottom{
     background: #fff;
-    color: #999;
+    color: rgb(210, 21, 21);
     padding: 60px 0;
     margin-right: -90px;
     margin-left: -90px;
@@ -58,14 +59,15 @@
 }
 .profile-box button{
     background: #fff;
-    color: #ff574a;
+    color: rgb(210, 21, 21);
     border: none;
     outline: none;
     box-shadow: 0 5px 10px rgba(244, 67, 54, 0.5);
     padding: 15px 60px;
     cursor: pointer;
     border-radius: 30px;
-    margin-bottom: -50px;
+    margin-top: 60px;
+    margin-bottom: 60px;
     font-weight: 600;
     font-size: 16px;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
     <title>Sign in</title>
 
     <!-- imports css sheet-->
-    <link href="{% static 'css/signin.css'%}" rel="stylesheet">
+    <link href="static/css/signin.css" rel="stylesheet">
 </head>
 
 
@@ -21,17 +21,19 @@
         <div class="login">
             <h1>Sign In</h1>
             <form action="" method="POST">
-                {% csrf_token %}
                 <!-- User input box-->
-                <input type="text" placeholder="username">
+                <input type="text" placeholder="Username" name="username" value="{{request.form.username }}">
                 <br>
             
                 <!--Password box-->
-                <input type="password" placeholder="password">
+                <input type="password" placeholder="Password" name="password" value="{{request.form.password }}">
                 <br>
                     
+                {% if error %}
+                <p class="error"><strong>Error:</strong> {{ error }}
+                {% endif %}
                 <!-- Sign in button-->
-                <button type="submit"><a href = "/index">Sign in</button></a>
+                <button type="submit">Sign in</button></a>
                 <br>
                 <br>
 

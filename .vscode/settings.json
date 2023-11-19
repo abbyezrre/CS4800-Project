@@ -1,3 +1,14 @@
 {
-    "liveServer.settings.port": 5502
+    "liveServer.settings.port": 5502,
+
+    "python.languageServer": "Pylance",
+    
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportShadowedImports": "none"
+    },
+    
+
+
 }
+
+
