@@ -32,6 +32,15 @@ def login():
             error = 'Invalid Username. Please try again.'
                 
     return render_template('signin.html', error=error)
+
+@app.route('/posting', methods=['GET', 'POST'])
+def post():
+    if request.method == 'POST':
+        name = request.form.get("name")
+        message = request.form.get("message")
+
+    return render_template('posting.html')
+
     
 # start the server with the 'run()' method
 if __name__ == '__main__':

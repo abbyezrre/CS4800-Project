@@ -10,14 +10,12 @@ from profile import *
 
 
 def main():
-<<<<<<< HEAD
 
     #login testing - helen
     loginTest = loginPage()
     loginTest.login()
 
 
-=======
     
     # test for signup and login - Abigail
     n = input("\n" + "Are you a new User: ")
@@ -42,7 +40,6 @@ def main():
         displayUser.userProfile()
    
     
->>>>>>> 74639907507f3b687c6abf307844bcc37dded12b
 if __name__ == "__main__":
     main()
 
