@@ -13,7 +13,13 @@ from profile import *
 
 
 def main():
-    """
+
+    #login testing - helen
+    loginTest = loginPage()
+    loginTest.login()
+
+
+    
     # test for signup and login - Abigail
     n = input("\n" + "Are you a new User: ")
     if n == "y":
@@ -35,21 +41,7 @@ def main():
         #profile testing - Elvin
         displayUser = profile()
         displayUser.userProfile()
-    """
-    #map testing - Abigail Ezrre
-    #stores the map images into the database
-    mapTest = Map()
-    mapTest.storeMap()
-    
-    #searches for the room 
-    x = input("Enter room number: ")
-    mapI = mapTest.searchMap(x) 
-    if mapI == None:
-        print("None")
-    else:
-        print(mapI)
-
-    
+   
     
 if __name__ == "__main__":
     main()

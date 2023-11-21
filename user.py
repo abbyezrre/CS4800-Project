@@ -29,8 +29,6 @@ class User:
             self.password = self.database.get_password(username)
             #self.user_email = self.database.get_useremail(username)
             self.age = self.database.get_age(username)
-            #self.signup_date = self.database.get_signin_date(username)
-            #self.profile_name = self.database.get_profile_name(username)
             
             #error with retrieving bio if you pick a user that doesnt have a bio
             #self.bio = self.database.get_bio(username)
