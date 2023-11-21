@@ -24,3 +24,5 @@ signup.py: controller for signup
 search.py: controller for search. only searches usernames at the moment
 
 main.py: used for testing the functionality of our controllers
+
+profile.py: controller for profile
