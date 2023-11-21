@@ -5,10 +5,15 @@ To run our project, python, pymongo, PIL, and Flask need to be installed.
 
 ## To run the server on your local machine, run this command in the terminal:
 
-1. python app.py
+- python app.py
 
 Then copy and paste the development server URL into your browser.
 
+## Functions that are working:
+- sign in
+- sign up
+- maps (search B101)
+- search bar on the homepage (search by username and returns first and last name. Additional usernames that can be tested: abby123, johnsmith209, budgie, reydub, isaac flroes)
 
 ### Overview of files:
 login.py: controller for login

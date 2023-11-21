@@ -63,9 +63,13 @@ def map():
 def search():
     output = []
     if request.method == "POST":
+        #gets search query from html
         searchInput = request.form.get("search")
+        #creates searching object with searchInput
         searching = searchBar(searchInput)
+        #searches to see if query exists in the database
         searching.search()
+        #appends array with first name and last name of user
         output.append(searching.output)
         
     return render_template('search.html', output=output)
@@ -73,7 +77,7 @@ def search():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     #copied from signup.py, coded by Abby
-    #modifications by Helen in app.py for connecting the controller to Flask
+    #modifications by Helen for connecting the controller to Flask
     #modifications by Helen to check if user exists in the database before user can sign up, and to check if passwords match
     error = None
     if request.method == 'POST':
