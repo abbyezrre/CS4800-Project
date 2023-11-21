@@ -12,7 +12,9 @@ Then copy and paste the development server URL into your browser.
 
 ### Overview of files:
 login.py: controller for login
+
 signup.py: controller for signup
+
 search.py: controller for search. only searches usernames at the moment
 
 main.py: used for testing the functionality of our controllers
