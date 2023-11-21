@@ -1,4 +1,5 @@
 # Map controller to search for specific room building
+#Abigail
 from user import *
 from Database.StoringUserInfo import *
 class Map:
@@ -8,6 +9,7 @@ class Map:
         self.user = storingMap()
         self.map = pullingMapInfo()
         
+    #stores room info, needs to be updated so I don't have to manually insert each image    
     def storeMap(self):
         
         ig = r"bizzini1/b103.png"
@@ -21,7 +23,7 @@ class Map:
         
         
         mapImage.create_new_document()
-        
+    # searches for room number and retrives the image associated with it
     def searchMap(self, roomnumber):
         mapI = self.map
         if mapI.get_location(roomnumber) == roomnumber:

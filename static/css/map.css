@@ -71,6 +71,7 @@
   }
 
 .login-item {
+  display: flex;
   list-style-type: none;
   margin-left: 900px;
   }

@@ -22,7 +22,8 @@ def login():
     if request.method == 'POST':
         #creating user object
         user = User()
-        
+        #made username variable global - Elvin
+        global username 
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
@@ -56,14 +57,20 @@ def map():
             return render_template('map.html', img = roomImage)
     
     return render_template('map.html')
-         
+
+#helen - search function
+#needs the UI to be updated 
 @app.route('/search', methods= ['GET', 'POST'])
 def search():
     output = []
     if request.method == "POST":
+        #gets search query from html
         searchInput = request.form.get("search")
+        #creates searching object with searchInput
         searching = searchBar(searchInput)
+        #searches to see if query exists in the database
         searching.search()
+        #appends array with first name and last name of user
         output.append(searching.output)
         
     return render_template('search.html', output=output)
@@ -71,7 +78,7 @@ def search():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     #copied from signup.py, coded by Abby
-    #modifications by Helen in app.py for connecting the controller to Flask
+    #modifications by Helen for connecting the controller to Flask
     #modifications by Helen to check if user exists in the database before user can sign up, and to check if passwords match
     error = None
     if request.method == 'POST':
@@ -110,19 +117,38 @@ def signup():
 
 @app.route('/posting', methods=['GET', 'POST'])
 def post():
+    user_post = session.get('user_post', [])
+
     if request.method == 'POST':
         name = request.form.get("name")
         message = request.form.get("message")
 
-        user_post = session.get('user_post', [])
-        user_post.append({name, message})
+        user_post.append({'name': name, 'message': message})
         session['user_post'] = user_post
 
 
     return render_template('posting.html', user_post=user_post)
 
-
+# profile function - Elvin
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    #pulls user info from database
+    dbase = pullingUserInfo()
     
+    #so far updates user profile from datatbase, will work on edit function 
+    try :
+       
+        f = dbase.get_fullname(username)
+        b = dbase.get_bio(username)
+        update = render_template('profile.html', fullname = f, bio = b)
+        #TO DO: still need to add image and major maybe?
+        return update
+    except:
+        #throws error if not signed in
+        
+        return render_template('home.html', error = "please sign in")  
+    
+   
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True)
