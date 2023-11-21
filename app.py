@@ -86,7 +86,7 @@ def post():
         name = request.form.get("name")
         message = request.form.get("message")
 
-        user_post = session.get('user_post')
+        user_post = session.get('user_post', [])
         user_post.append({name, message})
         session['user_post'] = user_post
 
