@@ -117,12 +117,13 @@ def signup():
 
 @app.route('/posting', methods=['GET', 'POST'])
 def post():
+    user_post = session.get('user_post', [])
+
     if request.method == 'POST':
         name = request.form.get("name")
         message = request.form.get("message")
 
-        user_post = session.get('user_post', [])
-        user_post.append({name, message})
+        user_post.append({'name': name, 'message': message})
         session['user_post'] = user_post
 
 
