@@ -22,7 +22,8 @@ def login():
     if request.method == 'POST':
         #creating user object
         user = User()
-        
+        #made username variable global - Elvin
+        global username 
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
@@ -86,8 +87,7 @@ def signup():
         newUser = StoringUserInfo()
         #create database of usernames
         usernameList = pullingUserInfo().get_allFieldInfo('username')
-        #made username variable global - Elvin
-        global username 
+        
         #gets input from html and stores it as username, pass1, and pass2
         username = request.form.get("username")
         pass1 = request.form.get("pass1")
