@@ -10,12 +10,12 @@ class Map:
         
     def storeMap(self):
         
-        ig = r"C:\Users\abiga\OneDrive\Documents\CS4800\Project\CS4800-Project\bizzini1\b101.png"
+        ig = r"bizzini1/b103.png"
         mapImage = storingMap()
         
-        mapImage.set_location("B101")
-        mapImage.set_building("Bizzini")
-        mapImage.set_roomnumber("101")
+        mapImage.set_location("")
+        mapImage.set_building("")
+        mapImage.set_roomnumber("")
         mapImage.set_image(ig)
         
         
