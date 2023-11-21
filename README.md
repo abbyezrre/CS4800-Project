@@ -14,6 +14,7 @@ Then copy and paste the development server URL into your browser.
 - sign up
 - maps (search B101)
 - search bar on the homepage (search by username and returns first and last name. Additional usernames that can be tested: abby123, johnsmith209, budgie, reydub, isaac flroes)
+- profile
 
 ### Overview of files:
 login.py: controller for login

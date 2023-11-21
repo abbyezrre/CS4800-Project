@@ -86,7 +86,8 @@ def signup():
         newUser = StoringUserInfo()
         #create database of usernames
         usernameList = pullingUserInfo().get_allFieldInfo('username')
-        
+        #made username variable global - Elvin
+        global username 
         #gets input from html and stores it as username, pass1, and pass2
         username = request.form.get("username")
         pass1 = request.form.get("pass1")
@@ -128,7 +129,21 @@ def post():
     return render_template('posting.html', user_post=user_post)
 
 
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    #pulls user info from database
+    dbase = pullingUserInfo()
     
+    #so far updates user profile from datatbase, will work on edit function 
+    try :
+        f = dbase.get_fullname(username)
+        b = dbase.get_bio(username)
+        update = render_template('profile.html', fullname = f, bio = b)
+        
+        return update
+    except:
+        #throws error if not signed in
+        return render_template('home.html', error = "please sign in")  
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True)
