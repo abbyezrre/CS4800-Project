@@ -128,7 +128,7 @@ def post():
 
     return render_template('posting.html', user_post=user_post)
 
-
+# profile function - Elvin
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     #pulls user info from database
@@ -136,14 +136,18 @@ def profile():
     
     #so far updates user profile from datatbase, will work on edit function 
     try :
+       
         f = dbase.get_fullname(username)
         b = dbase.get_bio(username)
         update = render_template('profile.html', fullname = f, bio = b)
-        
+        #TO DO: still need to add image and major maybe?
         return update
     except:
         #throws error if not signed in
+        
         return render_template('home.html', error = "please sign in")  
+    
+   
 # start the server with the 'run()' method
 if __name__ == '__main__':
     app.run(debug=True)
