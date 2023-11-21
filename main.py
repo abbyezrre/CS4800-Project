@@ -1,24 +1,19 @@
 
 from Database.pullingUserInfo import *
 from Database.StoringUserInfo import *
+from PIL import Image
+from io import BytesIO
 
 from login import *
 from user import *
 from signup import *
+from map import *
 from profile import *
 
 
 
 def main():
-<<<<<<< HEAD
-
-    #login testing - helen
-    loginTest = loginPage()
-    loginTest.login()
-
-
-=======
-    
+    """
     # test for signup and login - Abigail
     n = input("\n" + "Are you a new User: ")
     if n == "y":
@@ -40,9 +35,22 @@ def main():
         #profile testing - Elvin
         displayUser = profile()
         displayUser.userProfile()
-   
+    """
+    #map testing - Abigail Ezrre
+    #stores the map images into the database
+    mapTest = Map()
+    mapTest.storeMap()
     
->>>>>>> 74639907507f3b687c6abf307844bcc37dded12b
+    #searches for the room 
+    x = input("Enter room number: ")
+    mapI = mapTest.searchMap(x) 
+    if mapI == None:
+        print("None")
+    else:
+        print(mapI)
+
+    
+    
 if __name__ == "__main__":
     main()
 

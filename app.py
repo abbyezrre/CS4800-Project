@@ -1,6 +1,8 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, redirect, url_for, request
 from user import *
+from map import *
+from Database.StoringUserInfo import *
 
 # create the application object
 app = Flask(__name__)
@@ -32,6 +34,23 @@ def login():
             error = 'Invalid Username. Please try again.'
                 
     return render_template('signin.html', error=error)
+
+        
+@app.route('/map', methods= ['GET', 'POST'])
+def map():
+    
+    if request.method == 'POST':
+        map = Map()
+    
+        roomnumber = request.form.get("roomnumber")
+        roomImage = map.searchMap(roomnumber)
+        
+        if roomImage is True:
+            return render_template('map.html', img = roomImage)
+    
+    return render_template('map.html')
+         
+        
     
 # start the server with the 'run()' method
 if __name__ == '__main__':

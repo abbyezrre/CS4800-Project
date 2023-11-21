@@ -6,23 +6,21 @@ from PIL import Image
 from io import BytesIO
 
 # USING THE STORING MAP------------------------
-# map_info = storingMap()
+map_info = storingMap()
 
-# map_info.set_location("DBH 145")
-# map_info.set_building("Demergasso-Bava Hall")
-# map_info.set_roomnumber("145")
-# ig = r"c:\Users\isaac\OneDrive\Documents\CS4800-Project\CampusConnect\static\img\CSU_Stanislaus_seal.svg.png"
-# map_info.set_image(ig)
+map_info.set_location("B100")
+map_info.set_building("Bizzini")
+map_info.set_roomnumber("100")
+ig = r"C:\Users\abiga\OneDrive\Documents\CS4800\Project\CS4800-Project\bizzini1\b100.png"
+map_info.set_image(ig)
 
 # map_info.create_new_document()
 # END OF STORING MAP--------------------------
 
 # USING THE PULLMAPINFO------------
 user_info = pullingMapInfo()
-print(user_info.get_location("DBH 145"))
-print(user_info.get_building("DBH 145"))
-print(user_info.get_rooomnumber("DBH 145"))
-print(user_info.get_image("DBH 145"))
+
+print(user_info.get_image("B100"))
 
 
 #Isaac Flores
