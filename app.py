@@ -56,7 +56,9 @@ def map():
             return render_template('map.html', img = roomImage)
     
     return render_template('map.html')
-         
+
+#helen - search function
+#needs the UI to be updated 
 @app.route('/search', methods= ['GET', 'POST'])
 def search():
     output = []
