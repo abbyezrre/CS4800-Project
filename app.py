@@ -3,18 +3,14 @@ from flask import Flask, render_template, redirect, url_for, request
 from user import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
+from search import *
 # create the application object
 app = Flask(__name__)
 
 # use decorators to link the function to a url
 
-@app.route('/')
-def home():
-    return render_template('home.html')  # render a template
-
-
 #Helen
-@app.route('/signin', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -39,6 +35,21 @@ def login():
                 
     return render_template('signin.html', error=error)
 
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')  # render a template
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    output = []
+    if request.method == 'POST':
+        searchInput = request.form.get("search")
+        searching = searchBar(searchInput)
+        searching.search()
+        output.append(searching.output)
+
+        
+    return render_template('search.html', output=output)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
