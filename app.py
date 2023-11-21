@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')  # render a template
+    return render_template('home.html', user_post=session.get('user_post'))  # render a template
 
 @app.route('/signin', methods=['GET', 'POST'])
 def login():
@@ -38,6 +38,11 @@ def post():
     if request.method == 'POST':
         name = request.form.get("name")
         message = request.form.get("message")
+
+        user_post = session.get('user_post')
+        user_post.append({name, message})
+        session['user_post'] = user_post
+
 
     return render_template('posting.html')
 
