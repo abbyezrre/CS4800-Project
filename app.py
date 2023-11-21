@@ -15,8 +15,8 @@ def home():
     return render_template('home.html', user_post=session.get('user_post'))  # render a template
 
 
-#Helen - login
-@app.route('/', methods=['GET', 'POST'])
+#Helen - signin
+@app.route('/signin', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -57,8 +57,16 @@ def map():
     
     return render_template('map.html')
          
+@app.route('/search', methods= ['GET', 'POST'])
+def search():
+    output = []
+    if request.method == "POST":
+        searchInput = request.form.get("search")
+        searching = searchBar(searchInput)
+        searching.search()
+        output.append(searching.output)
         
-
+    return render_template('search.html', output=output)
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
