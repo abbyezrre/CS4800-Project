@@ -1,5 +1,5 @@
 # import the Flask class from the flask module
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, session
 from user import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
@@ -91,7 +91,7 @@ def post():
         session['user_post'] = user_post
 
 
-    return render_template('posting.html')
+    return render_template('posting.html', user_post=user_post)
 
     
 # start the server with the 'run()' method
