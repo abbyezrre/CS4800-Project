@@ -1,6 +1,7 @@
 # import the Flask class from the flask module
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, session
 from user import *
+from map import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
@@ -9,7 +10,12 @@ app = Flask(__name__)
 
 # use decorators to link the function to a url
 
-#Helen
+@app.route('/')
+def home():
+    return render_template('home.html', user_post=session.get('user_post'))  # render a template
+
+
+#Helen - login
 @app.route('/', methods=['GET', 'POST'])
 def login():
     error = None
@@ -35,21 +41,24 @@ def login():
                 
     return render_template('signin.html', error=error)
 
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    return render_template('home.html')  # render a template
-
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    output = []
+ # map page - Abigail 
+ # connects to map controller and the html        
+@app.route('/map', methods= ['GET', 'POST'])
+def map():
+    
     if request.method == 'POST':
-        searchInput = request.form.get("search")
-        searching = searchBar(searchInput)
-        searching.search()
-        output.append(searching.output)
-
+        map = Map()
+    
+        roomnumber = request.form.get("roomnumber")
+        roomImage = map.searchMap(roomnumber)
         
-    return render_template('search.html', output=output)
+        if roomImage is True:
+            return render_template('map.html', img = roomImage)
+    
+    return render_template('map.html')
+         
+        
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -97,7 +106,13 @@ def post():
         name = request.form.get("name")
         message = request.form.get("message")
 
-    return render_template('posting.html')
+        user_post = session.get('user_post', [])
+        user_post.append({name, message})
+        session['user_post'] = user_post
+
+
+    return render_template('posting.html', user_post=user_post)
+
 
     
 # start the server with the 'run()' method

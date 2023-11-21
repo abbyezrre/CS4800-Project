@@ -187,7 +187,7 @@ class pullingMapInfo:
         return building
     
         # method to return the roomnumber
-    def get_rooomnumber(self, location): 
+    def get_roomnumber(self, location): 
         # filter of the info we need (this name as to how it is stored in the data base)
         fieldfilter = "roomnumber"
         # call the get_mapInfo method
