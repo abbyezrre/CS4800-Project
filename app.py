@@ -63,6 +63,7 @@ def map():
 @app.route('/search', methods= ['GET', 'POST'])
 def search():
     output = []
+    input = ""
     if request.method == "POST":
         #gets search query from html
         searchInput = request.form.get("search")
@@ -72,8 +73,10 @@ def search():
         searching.search()
         #appends array with first name and last name of user
         output.append(searching.output)
+        input += searchInput
         
-    return render_template('search.html', output=output)
+    output = sum(output,[])
+    return render_template('search.html', output=output, input=input, len = len(output))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
