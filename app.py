@@ -5,6 +5,7 @@ from map import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
+from posting import posting
 # create the application object
 app = Flask(__name__)
 
@@ -125,6 +126,7 @@ def post():
     if request.method == 'POST':
         name = request.form.get("name")
         message = request.form.get("message")
+        posting.post_feed(name, message)
 
         user_post.append({'name': name, 'message': message})
         session['user_post'] = user_post
