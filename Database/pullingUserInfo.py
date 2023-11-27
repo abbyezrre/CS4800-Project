@@ -116,13 +116,15 @@ class pullingUserInfo:
         # call the get_userInfo method
         image_data = self.get_userInfo(field_filter, username)
 
-        if image_data:
-            # decode the base64 image data
-            decoded_image_data = base64.b64decode(image_data)
+        return image_data
+    
+        # if image_data:
+        #     # decode the base64 image data
+        #     decoded_image_data = base64.b64decode(image_data)
 
-            # open and display the image using PIL
-            image = Image.open(BytesIO(decoded_image_data))
-            image.show()
+        #     # open and display the image using PIL
+        #     image = Image.open(BytesIO(decoded_image_data))
+        #     image.show()
 
    # method to return the bio
     def get_bio(self, username): 
@@ -168,13 +170,14 @@ class pullingMapInfo:
         # call the get_userInfo method
         image_data = self.get_mapInfo(field_filter, location)
 
-        if image_data:
-            # decode the base64 image data
-            decoded_image_data = base64.b64decode(image_data)
+        return image_data
+        # if image_data:
+        #     # decode the base64 image data
+        #     decoded_image_data = base64.b64decode(image_data)
 
-            # open and display the image using PIL
-            image = Image.open(BytesIO(decoded_image_data))
-            image.show()
+        #     # open and display the image using PIL
+        #     image = Image.open(BytesIO(decoded_image_data))
+        #     image.show()
 
     # method to return the building
     def get_building(self, location): 
@@ -347,13 +350,14 @@ class pullingPostInfo:
         # call the get_userInfo method
         image_data = self.get_postInfo(field_filter, user)
 
-        if image_data:
-            # decode the base64 image data
-            decoded_image_data = base64.b64decode(image_data)
+        return image_data
+        # if image_data:
+        #     # decode the base64 image data
+        #     decoded_image_data = base64.b64decode(image_data)
 
-            # open and display the image using PIL
-            image = Image.open(BytesIO(decoded_image_data))
-            image.show()
+        #     # open and display the image using PIL
+        #     image = Image.open(BytesIO(decoded_image_data))
+        #     image.show()
 
     # method to return the building
     def get_comment(self, user): 

@@ -1,9 +1,3 @@
-#from pullingUserInfo import pullingUserInfo
-#from StoringUserInfo import StoringUserInfo
-from StoringUserInfo import storingMap
-from pullingUserInfo import pullingMapInfo
-from StoringUserInfo import storingClubs
-from pullingUserInfo import pullingClubInfo
 from StoringUserInfo import *
 from pullingUserInfo import *
 from PIL import Image
@@ -61,13 +55,14 @@ from io import BytesIO
 # user_info.set_image(ig)
 
 # user_info.create_new_document()
-# user_info = pullingClubInfo()
-# print(user_info.get_club("cs"))
-# print(user_info.get_location("cs"))
-# print(user_info.get_date("cs"))
-# print(user_info.get_time("cs"))
-# print(user_info.get_eventinfo("cs"))
-# print(user_info.get_image("cs"))
+# user_info = pullingEventInfo()
+# print(user_info.get_club("Gaming"))
+# print(user_info.get_location("Gaming"))
+# print(user_info.get_date("Gaming"))
+# print(user_info.get_time("Gaming"))
+# print(user_info.get_eventinfo("Gaming"))
+# print(user_info.get_image("Gaming"))
+# print(user_info.get_timestamp("Gaming"))
 
 #Isaac Flores
 # START - testing if I am able to pull information fromt he data base
