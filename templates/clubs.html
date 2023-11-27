@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-
+<!-- Isaac -->
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Clubs</title>
     <link href="static/css/home.css" rel="stylesheet">
+    <link href="static/css/clubs.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <nav class="navbar"> <!-- menu -->
+        <nav class="navbar">
+            <!-- menu -->
             <ul class="list-items">
                 <li><a href="#" class="button">Home</a></li>
                 <li><a href="/clubs" class="button">Hub</a></li>
@@ -19,29 +21,38 @@
                 <li><a href="/map" class="button">Map</a></li>
                 <li><a href="/posting" class="button">Posting</a></li>
             </ul>
-            
+
             <ul class="login-item">
-                
                 <li><a href="/profile" class="button">Profile</a></li>
                 <li><a href="/signin" class="button">Sign In</a></li>
                 <p><strong>{{error}}</strong></p> <!--For profile function - Elvin-->
             </ul>
-             
         </nav>
-        <div class="main-content">
 
+        <div class="main-content">
             <div class="search">
                 <form method="POST" action="/search">
                     <input type="text" placeholder="Search.." name="search" value="{{request.form.search }}">
-                    <button type="submit">Go!</button></a>
+                    <button type="submit">Go!</button>
                 </form>
             </div>
+        </div>
 
-
-            
+        <div class="clubs">
+            <ul class="club-list">
+                {% for club in clubs %}
+                <li class="club">
+                    <img src="data:image/png;base64,{{ club['logo'] }}" alt="{{ club['name'] }} Logo">
+                    <div class="club-info">
+                        <h2>{{ club['name'] }}</h2>
+                        <p>{{ club['description'] }}</p>
+                        <p>Contact: {{ club['contact'] }}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
         </div>
     </div>
-
 </body>
 
 </html>

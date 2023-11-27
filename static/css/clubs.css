@@ -1,0 +1,30 @@
+.club-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.clubs {
+    margin: 10px;
+    text-align: center;
+}
+
+
+.club-info {
+    display: none;
+    margin-top: 10px;
+}
+
+.clubs img:hover + .club-info,
+.club-info:hover {
+    display: block;
+}
+
+.clubs img {
+    background-image: url("{{ url_for('static', filename=club['logo']) }}");
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+

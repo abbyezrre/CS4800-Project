@@ -146,7 +146,18 @@ def profile():
         #throws error if not signed in
         
         return render_template('home.html', error = "please sign in")  
-    
+
+@app.route('/clubs')
+def index():
+    user_info = pullingClubInfo()
+    clubs = [
+        #pulling the infomation from database of clubs to the website
+        {'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
+        {'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
+  
+        # Add more clubs as needed
+    ]
+    return render_template('clubs.html', clubs=clubs)
    
 # start the server with the 'run()' method
 if __name__ == '__main__':

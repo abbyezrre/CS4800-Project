@@ -206,41 +206,291 @@ class pullingMapInfo:
         # return the result
         return roomnumber
     
-        # # get only middle name
-        # def get_middlename(self):
-        #     return self.middlename
-        
+#Isaac Flores
+class pullingClubInfo:
+     
+    def __init__(self):
+        # connect to MongoDB
+        self.client = pymongo.MongoClient("mongodb+srv://iflores10:nJnreV9AdMHQoBs7@cluster0.skqqar6.mongodb.net/")
 
+        # select the database
+        self.db = self.client["CampusConnect"]
 
-        # # get email
-        # def get_useremail(self):
-        #     return self.user_email
+        # select the collection
+        self.collection = self.db["Clubs"]
         
+    def get_clubInfo(self, field, club):
+        # query to retrieve documents only with the first name isaac
+        query = {"club": club}
+        projection = {field:1}
+
+        # find documents in the collection based on the query
+        cursor = self.collection.find(query, projection)
+
+        for document in cursor:
+            return document[field]   
         
-        # # get sign in date
-        # def get_signin_date(self):
-        #     return self.signup_date
+        # open image stored in database
+    def get_image(self, club):
+        # filter for the info we need 
+        field_filter = "image_data"
+        # call the get_userInfo method
+        image_data = self.get_clubInfo(field_filter, club)
+
+        return image_data
+        # if image_data:
+        #     # decode the base64 image data
+        #     decoded_image_data = base64.b64decode(image_data)
+
+        #     # open and display the image using PIL
+        #     image = Image.open(BytesIO(decoded_image_data))
+        #     image.show()
+
+    # method to return the title
+    def get_title(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "title"
+        # call the get_clubInfo method
+        title = self.get_clubInfo(fieldfilter, club)
+
+        # return the result
+        return title
+    
+        # method to return the club name
+    def get_club(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "club"
+        # call the get_clubInfo method
+        club = self.get_clubInfo(fieldfilter, club)
+
+        # return the result
+        return club
+    
+    def get_contact(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "contact"
+        # call the get_clubInfo method
+        contact = self.get_clubInfo(fieldfilter, club)
+
+        # return the result
+        return contact
+    
+    # method to return the location
+    def get_location(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "location"
+        # call the get_clubInfo method
+        eventlocation = self.get_clubInfo(fieldfilter, club)
+
+        # return the result
+        return eventlocation
+    
+        # method to return the eventinfo
+    def get_eventinfo(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "eventinfo"
+        # call the get_clubInfo method
+        eventinfo = self.get_clubInfo(fieldfilter, club)
+
+        # return the result
+        return eventinfo
+    
+        # method to return the event date
+    def get_date(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "date"
+        # call the get_clubInfo method
+        date = self.get_clubInfo(fieldfilter, club)
+
+        # return the result
+        return date
+    
+        # method to return the time of event
+    def get_time(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "time"
+        # call the get_clubInfo method
+        time = self.get_clubInfo(fieldfilter, club)
+
+        # return the result
+        return time
+    
+
+#Isaac Flores
+class pullingPostInfo:
+     
+    def __init__(self):
+        # connect to MongoDB
+        self.client = pymongo.MongoClient("mongodb+srv://iflores10:nJnreV9AdMHQoBs7@cluster0.skqqar6.mongodb.net/")
+
+        # select the database
+        self.db = self.client["CampusConnect"]
+
+        # select the collection
+        self.collection = self.db["post"]
         
-        # # get name of profile
-        # def get_profile_name(self):
-        #     return self.profile_name
+    def get_postInfo(self, field, user):
+        # query to retrieve documents only with the first name isaac
+        query = {"user": user}
+        projection = {field:1}
+
+        # find documents in the collection based on the query
+        cursor = self.collection.find(query, projection)
+
+        for document in cursor:
+            return document[field]   
         
-        # # get user post comment
-        # def get_user_post_comment(self):
-        #     return self.user_post_comment
+        # open image stored in database
+    def get_image(self, user):
+        # filter for the info we need 
+        field_filter = "image_data"
+        # call the get_userInfo method
+        image_data = self.get_postInfo(field_filter, user)
+
+        if image_data:
+            # decode the base64 image data
+            decoded_image_data = base64.b64decode(image_data)
+
+            # open and display the image using PIL
+            image = Image.open(BytesIO(decoded_image_data))
+            image.show()
+
+    # method to return the building
+    def get_comment(self, user): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "comment"
+        # call the get_mapInfo method
+        comment = self.get_postInfo(fieldfilter, user)
+
+        # return the result
+        return comment
+    
+        # method to return the roomnumber
+    def get_timestamp(self, user): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "timestamp"
+        # call the get_mapInfo method
+        timestamp = self.get_postInfo(fieldfilter, user)
+
+        # return the result
+        return timestamp
+    
+#Isaac Flores
+class pullingEventInfo:
+     
+    def __init__(self):
+        # connect to MongoDB
+        self.client = pymongo.MongoClient("mongodb+srv://iflores10:nJnreV9AdMHQoBs7@cluster0.skqqar6.mongodb.net/")
+
+        # select the database
+        self.db = self.client["CampusConnect"]
+
+        # select the collection
+        self.collection = self.db["events"]
         
-        # # get date of posted comment
-        # def get_comment_date(self):
-        #     return self.comment_date
+    def get_eventsInfo(self, field, club):
+        # query to retrieve documents only with the first name isaac
+        query = {"club": club}
+        projection = {field:1}
+
+        # find documents in the collection based on the query
+        cursor = self.collection.find(query, projection)
+
+        for document in cursor:
+            return document[field]   
         
-        # # get image posted (right now its a string but should be a pdf? pgn? discuss as a group)
-        # def get_post_image(self):
-        #     return self.post_image
-        
-        # # get video posted (right now its a string but should be a vid? discuss as a group)
-        # def get_post_video(self):
-        #     return self.post_video
-        
-        
-        
-   
+        # open image stored in database
+    def get_image(self, club):
+        # filter for the info we need 
+        field_filter = "image_data"
+        # call the get_userInfo method
+        image_data = self.get_eventsInfo(field_filter, club)
+
+        return image_data
+        # if image_data:
+        #     # decode the base64 image data
+        #     decoded_image_data = base64.b64decode(image_data)
+
+        #     # open and display the image using PIL
+        #     image = Image.open(BytesIO(decoded_image_data))
+        #     image.show()
+
+    # method to return the title
+    def get_title(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "title"
+        # call the get_clubInfo method
+        title = self.get_eventsInfo(fieldfilter, club)
+
+        # return the result
+        return title
+    
+        # method to return the club name
+    def get_club(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "club"
+        # call the get_clubInfo method
+        club = self.get_eventsInfo(fieldfilter, club)
+
+        # return the result
+        return club
+    
+    def get_contact(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "contact"
+        # call the get_clubInfo method
+        contact = self.get_eventsInfo(fieldfilter, club)
+
+        # return the result
+        return contact
+    
+    # method to return the location
+    def get_location(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "location"
+        # call the get_clubInfo method
+        eventlocation = self.get_eventsInfo(fieldfilter, club)
+
+        # return the result
+        return eventlocation
+    
+        # method to return the eventinfo
+    def get_eventinfo(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "eventinfo"
+        # call the get_clubInfo method
+        eventinfo = self.get_eventsInfo(fieldfilter, club)
+
+        # return the result
+        return eventinfo
+    
+        # method to return the event date
+    def get_date(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "date"
+        # call the get_clubInfo method
+        date = self.get_eventsInfo(fieldfilter, club)
+
+        # return the result
+        return date
+    
+        # method to return the time of event
+    def get_time(self, club): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "time"
+        # call the get_clubInfo method
+        time = self.get_eventsInfo(fieldfilter, club)
+
+        # return the result
+        return time
+    
+        # method to return the timestamp
+    def get_timestamp(self, user): 
+        # filter of the info we need (this name as to how it is stored in the data base)
+        fieldfilter = "timestamp"
+        # call the get_mapInfo method
+        timestamp = self.get_eventsInfo(fieldfilter, user)
+
+        # return the result
+        return timestamp
+    
