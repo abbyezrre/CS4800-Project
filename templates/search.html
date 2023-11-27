@@ -9,7 +9,14 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <p>{{ output }}</p>
+        <h1>Search Results for {{ input }} </h1>
+
+        <!-- for loop that goes through the output array and prints them one line per item-->
+        {% for i in range(0, len)%}
+        
+            <ul>{{ output[i] }}</ul>
+
+        {% endfor %}
         
         <script src="" async defer></script>
     </body>

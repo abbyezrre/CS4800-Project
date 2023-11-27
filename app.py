@@ -5,6 +5,7 @@ from map import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
+from posting import posting
 # create the application object
 app = Flask(__name__)
 
@@ -63,6 +64,7 @@ def map():
 @app.route('/search', methods= ['GET', 'POST'])
 def search():
     output = []
+    input = ""
     if request.method == "POST":
         #gets search query from html
         searchInput = request.form.get("search")
@@ -72,8 +74,10 @@ def search():
         searching.search()
         #appends array with first name and last name of user
         output.append(searching.output)
+        input += searchInput
         
-    return render_template('search.html', output=output)
+    output = sum(output,[])
+    return render_template('search.html', output=output, input=input, len = len(output))
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -117,12 +121,14 @@ def signup():
 
 @app.route('/posting', methods=['GET', 'POST'])
 def post():
+    user_post = session.get('user_post', [])
+
     if request.method == 'POST':
         name = request.form.get("name")
         message = request.form.get("message")
+        posting.post_feed(name, message)
 
-        user_post = session.get('user_post', [])
-        user_post.append({name, message})
+        user_post.append({'name': name, 'message': message})
         session['user_post'] = user_post
 
 
