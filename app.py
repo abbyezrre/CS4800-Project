@@ -42,22 +42,7 @@ def login():
             error = 'Invalid Username. Please try again.'
                 
     return render_template('signin.html', error=error)
-
- # map page - Abigail 
- # connects to map controller and the html        
-@app.route('/map', methods= ['GET', 'POST'])
-def map():
-    
-    if request.method == 'POST':
-        map = Map()
-    
-        roomnumber = request.form.get("roomnumber")
-        roomImage = map.searchMap(roomnumber)
-        
-        if roomImage is True:
-            return render_template('map.html', img = roomImage)
-    
-    return render_template('map.html')
+ 
 
 #helen - search function
 #needs the UI to be updated 
@@ -152,6 +137,44 @@ def profile():
         #throws error if not signed in
         
         return render_template('home.html', error = "please sign in")  
+
+#  # map page - Abigail 
+#  # connects to map controller and the html        
+# @app.route('/map', methods= ['GET', 'POST'])
+# def map():
+    
+#     if request.method == 'POST':
+#         map = Map()
+    
+#         roomnumber = request.form.get("roomnumber")
+#         roomImage = map.searchMap(roomnumber)
+        
+#         if roomImage is True:
+#             return render_template('map.html', img = roomImage)
+    
+#     return render_template('map.html')
+
+# map page - Abigail
+# looked over the code since we were having problems displaying the image... adjusted the code to have the images pull from the database - Isaac
+# connects to map controller and the html 
+@app.route('/map', methods=['GET', 'POST'])
+def display_map():
+    # using the database
+    map= pullingMapInfo()
+    map_image_data = None
+
+    if request.method == 'POST':
+        # inserted in the html page in the searchbar
+        room_number = request.form.get('roomnumber')
+
+        # get image from database on the room number
+        map_image_data = map.get_image(room_number)
+    else:
+        # default display without form submission (this should be the map campus)
+        map_image_data = map.get_image("Campus Map")
+    
+    return render_template('map.html', mapimage=map_image_data)
+
 
 @app.route('/clubs')
 def index():

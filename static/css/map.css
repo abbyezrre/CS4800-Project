@@ -90,7 +90,7 @@
   background-color: red;
   }
 .map-img {
-    width: 800px
+    width: 50%
   }
 
 .search {
@@ -119,4 +119,8 @@
     margin-right: 16px;
     font-size: 17px;
   }
-  
+
+    /* size of campus map image*/
+.smaller-image {
+    width: 50%;
+  }

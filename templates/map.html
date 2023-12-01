@@ -31,9 +31,15 @@
         <div class="main-content">
             <h1 class="title-text">Campus Map</h1>
             <div class="col-sm">
-                
-                <img src="static/img/map.png" class="map-img">
+                <div class="mapimage">
+                    {% if mapimage %}
+                        <img src="data:image/png;base64,{{ mapimage }}" alt="Campus Map" class="smaller-image">
+                    {% else %}
+                        <p>No map image available</p>
+                    {% endif %}
+                </div>
             </div>
+            </div>                    
 
             <form action="" method="POST">
             <div class="search"> <!-- search bar -->
@@ -41,7 +47,7 @@
               </div>
             <!--room image pops up when it is searched-->
             {% if img %}
-            <img src = "{{img['get_image']}}" class= "map-img">
+            <img src = "data:image/png;base64, {{img['get_image']}}" class= "map-img">
             {% endif %}
             </form>
         </div>

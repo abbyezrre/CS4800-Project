@@ -171,6 +171,7 @@ class pullingMapInfo:
         image_data = self.get_mapInfo(field_filter, location)
 
         return image_data
+    
         # if image_data:
         #     # decode the base64 image data
         #     decoded_image_data = base64.b64decode(image_data)
