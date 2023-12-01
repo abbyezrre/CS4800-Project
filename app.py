@@ -164,7 +164,7 @@ def profile():
 @app.route('/map', methods=['GET', 'POST'])
 def display_map():
     # using the database
-    map= pullingMapInfo()
+    map= Map()
     map_image_data = None
 
     if request.method == 'POST':
@@ -172,10 +172,10 @@ def display_map():
         room_number = request.form.get('roomnumber')
 
         # get image from database on the room number
-        map_image_data = map.get_image(room_number)
+        map_image_data = map.searchMap(room_number)
     else:
         # default display without form submission (this should be the map campus)
-        map_image_data = map.get_image("Campus Map")
+        map_image_data = map.searchMap("Campus Map")
     
     return render_template('map.html', mapimage=map_image_data)
 
