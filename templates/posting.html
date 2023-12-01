@@ -34,14 +34,14 @@
 
     <h2>Post Your Feed</h2>
 
-    <form id="feedForm" method="post" action="/posting/">
+    <form id="feedForm" method="post" action="/posting">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
         <label for="message">Feed:</label>
         <textarea id="message" name="message" required></textarea>
 
-        <button type="button" onclick="submitForm()">Post Feed</button>
+        <button type="submit">Post Feed</button>
     </form>
 
     <!-- Feed container -->
@@ -55,6 +55,7 @@
         {% endfor %}
     </div>
 
+    <!--
     <script>
         function submitForm() {
             var name = document.getElementById('name').value;
@@ -73,6 +74,7 @@
             document.getElementById('message').value = '';
         }
     </script>
+-->
 
 </body>
 

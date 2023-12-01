@@ -5,7 +5,7 @@ from map import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
-from posting import posting
+from posting import PostingController
 # create the application object
 app = Flask(__name__)
 
@@ -103,18 +103,22 @@ def signup():
     
     return render_template('signup.html', error=error)
     
-
+#kim - post function
 @app.route('/posting', methods=['GET', 'POST'])
 def post():
     user_post = session.get('user_post', [])
 
     if request.method == 'POST':
+        #get data from form
         name = request.form.get("name")
         message = request.form.get("message")
-        posting.post_feed(name, message)
 
+        posting_post = PostingController()
+
+        posting_post.post_feed(name, message)
+        #append post to user posts
         user_post.append({'name': name, 'message': message})
-        session['user_post'] = user_post
+        #session['user_post'] = user_post
 
 
     return render_template('posting.html', user_post=user_post)
