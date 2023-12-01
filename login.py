@@ -2,36 +2,25 @@
 from user import *
 class loginPage:
     
-    def __init__(self):
+    def __init__(self, username, password):
         self.loginStatus = False
         self.user = User()
-
-    # login function that prints success if user and pass are correct
-    # else prints invalid and prompts user to try again
-            
+        self.username = username
+        self.password = password
+        self.error = None
+        
     def login(self):
         
-        global userInputUsername 
+        verifyUser = self.user.findUser(self.username)
         
-        while self.loginStatus == False:
-             
-            userInputUsername = input("Enter your username: ")
-            
-            #verifyUser evaluates to True or false depending on if the userinput was found in the database
-            verifyUser = self.user.findUser(userInputUsername)
-            
-            if verifyUser is True:
-                userInputPassword = input("Enter your password: ")
-                if self.user.get_password() == userInputPassword:
-                    print(f'You were successfully logged in {self.user.get_username()}!')
-                    #loginStatus evaluates to True and the while loop is ended
-                    self.loginStatus = True
-                    
-                   
-                else:
-                    print("Invalid password.")
+        if verifyUser:
+    
+            if self.user.get_password() == self.password:
+                self.loginStatus = True
             else:
-                print("Invalid username.")
+                self.error = 'Invalid Password. Please try again.'
+        else:
+            self.error = 'Invalid Username. Please try again.'
             
     #for passing args to profile - Elvin
     def forProfile():
