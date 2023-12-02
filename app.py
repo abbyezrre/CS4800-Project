@@ -54,10 +54,11 @@ def map():
         roomnumber = request.form.get("roomnumber")
         roomImage = map.searchMap(roomnumber)
         
-        if roomImage is True:
-            return render_template('map.html', img = roomImage)
-    
-    return render_template('map.html')
+    else:
+        
+        roomImage = map.searchMap("Campus Map")
+        
+    return render_template('map.html', img = roomImage)
 
 #helen - search function
 #needs the UI to be updated 

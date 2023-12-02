@@ -23,10 +23,11 @@ class Map:
         
         
         mapImage.create_new_document()
+        
     # searches for room number and retrives the image associated with it
     def searchMap(self, roomnumber):
-        mapI = self.map
-        if mapI.get_location(roomnumber) == roomnumber:
-            return mapI.get_image(roomnumber)
+        getroomImage = self.map
+        if getroomImage.get_location(roomnumber) == roomnumber:
+            return getroomImage.get_image(roomnumber)
         
         pass

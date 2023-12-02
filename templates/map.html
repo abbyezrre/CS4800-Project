@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map</title>
-    <link href="static/css/index.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
     <link href="static/css/map.css" rel="stylesheet">
 </head>
 
@@ -31,8 +31,12 @@
         <div class="main-content">
             <h1 class="title-text">Campus Map</h1>
             <div class="col-sm">
-                
-                <img src="static/img/map.png" class="map-img">
+                <img  src="static/img/map.png" class="map-img">
+                <div class= "list-item">
+                {% if img %}
+                <img src = "data:image/png;base64, {{img}}" alt="Not Found" class= "map-img">
+                {% endif %} 
+                </div>
             </div>
 
             <form action="" method="POST">
@@ -40,9 +44,10 @@
                 <input type="text" placeholder="Search.." name="roomnumber" value="{{request.form.roomnumber}}">
               </div>
             <!--room image pops up when it is searched-->
-            {% if img %}
-            <img src = "{{img['get_image']}}" class= "map-img">
-            {% endif %}
+            
+
+            
+            
             </form>
         </div>
     </div>

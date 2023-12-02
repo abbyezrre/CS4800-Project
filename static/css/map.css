@@ -90,8 +90,15 @@
   background-color: red;
   }
 .map-img {
-    width: 800px
+    width: 500px
   }
+
+.room img {
+  
+  width: 200px;
+  height: 200px;
+
+}
 
 .search {
     overflow: hidden;
