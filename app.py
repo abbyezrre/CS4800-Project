@@ -10,12 +10,14 @@ from login import *
 from signup import *
 # create the application object
 app = Flask(__name__)
-
+app.secret_key = 'super secret key'
 
 @app.route('/')
 def home():
-  
-    return render_template('home.html', user_post=session.get('user_post'))  # render a template
+    user = None
+    if session.get('username') is not None:
+        user = session.get('username')
+    return render_template('home.html',user=user, user_post=session.get('user_post'))  # render a template
 
 
 #Helen - signin
@@ -31,9 +33,9 @@ def login():
         password = request.form.get("password")
 
         login = loginPage(username, password)
-        login.login()
+        login.checkpassword()
         if login.loginStatus is True: 
-
+            session['username'] = username
             return redirect(url_for('home'))
         else:
             error = login.error
@@ -79,6 +81,11 @@ def search():
     output = sum(output,[])
     return render_template('search.html', output=output, input=input, len = len(output))
 
+@app.route('/signout', methods=['GET', 'POST'])
+def signout():
+    user=None
+    session.clear()
+    return render_template('home.html',user=user)
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     #copied from signup.py, coded by Abby

@@ -9,7 +9,7 @@ class loginPage:
         self.password = password
         self.error = None
         
-    def login(self):
+    def checkpassword(self):
         
         verifyUser = self.user.findUser(self.username)
         
