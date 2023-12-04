@@ -169,17 +169,19 @@ class pullingMapInfo:
         field_filter = "image_data"
         # call the get_userInfo method
         image_data = self.get_mapInfo(field_filter, location)
-
+        
         return image_data
+        """
+        if image_data:
     
         # if image_data:
         #     # decode the base64 image data
-        #     decoded_image_data = base64.b64decode(image_data)
+            decoded_image_data = base64.b64decode(image_data)
 
         #     # open and display the image using PIL
-        #     image = Image.open(BytesIO(decoded_image_data))
-        #     image.show()
-
+            image = Image.open(BytesIO(decoded_image_data))
+            image.show()
+        """
     # method to return the building
     def get_building(self, location): 
         # filter of the info we need (this name as to how it is stored in the data base)
@@ -242,13 +244,13 @@ class pullingClubInfo:
         image_data = self.get_clubInfo(field_filter, club)
 
         return image_data
-        # if image_data:
+        #if image_data:
         #     # decode the base64 image data
-        #     decoded_image_data = base64.b64decode(image_data)
+        #    decoded_image_data = base64.b64decode(image_data)
 
         #     # open and display the image using PIL
-        #     image = Image.open(BytesIO(decoded_image_data))
-        #     image.show()
+        #    image = Image.open(BytesIO(decoded_image_data))
+        #    image.show()
 
     # method to return the title
     def get_title(self, club): 

@@ -41,7 +41,23 @@ def login():
 
     return render_template('signin.html', error=error)
 
- 
+ # map page - Abigail 
+ # connects to map controller and the html     
+ # made changes to map function by implementing some parts of Issac's code so image pops on the page
+@app.route('/map', methods= ['GET', 'POST'])
+def map():
+    map = Map()
+    
+    if request.method == 'POST':
+        
+    
+        roomnumber = request.form.get("roomnumber")
+        roomImage = map.searchMap(roomnumber)
+
+    else:
+        roomImage = None
+        
+    return render_template('map.html', img = roomImage)
 
 #helen - search function
 #needs the UI to be updated 
@@ -159,6 +175,7 @@ def profile():
 # map page - Abigail
 # looked over the code since we were having problems displaying the image... adjusted the code to have the images pull from the database - Isaac
 # connects to map controller and the html 
+"""
 @app.route('/map', methods=['GET', 'POST'])
 def display_map():
     # using the database
@@ -176,7 +193,7 @@ def display_map():
         map_image_data = map.searchMap("Campus Map")
     
     return render_template('map.html', mapimage=map_image_data)
-
+"""
 
 @app.route('/clubs')
 def index():

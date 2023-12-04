@@ -9,8 +9,17 @@
   }
 
 .row {
-  display: flex;
+  content: "";
+  clear: both;
+  display: table;
   }
+
+.column {
+  float: left;
+  width: 50%
+  
+  
+}
 
 .navbar {
   display: flex;
@@ -81,16 +90,13 @@
   padding: 20px;
   }
 
-.club-cards-container {
-  display: flex;
-  overflow-x: scroll;
+.map-img {
+    width: 60%
   }
 
-.club-cards-container::-webkit-scrollbar-thumb {
-  background-color: red;
-  }
-.map-img {
-    width: 50%
+.room-img {
+  width: 30%
+  
   }
 
 .search {
@@ -124,3 +130,7 @@
 .smaller-image {
     width: 50%;
   }
+
+	.modal-dialog {
+    max-width: 800px;
+}
