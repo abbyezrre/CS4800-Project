@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-
+  
     return render_template('home.html', user_post=session.get('user_post'))  # render a template
 
 
@@ -90,26 +90,36 @@ def signup():
         
 
     return render_template('signup.html', error=error)
-    
-#kim - post function
+
+
+# ... (previous code)
+
+# Posting route - Isaac
 @app.route('/posting', methods=['GET', 'POST'])
-def post():
-    user_post = session.get('user_post', [])
+def posting():
+    # Instantiate the PostingController class
+    posting_controller = storingPost()
+    post = pullingPostInfo()
 
     if request.method == 'POST':
-        #get data from form
-        name = request.form.get("name")
-        message = request.form.get("message")
+        # Get the post content from the form
+        post_content = request.form.get('postContent')
 
-        posting_post = PostingController()
+        # Set the user and comment in the PostingController instance
+        posting_controller.set_user("Isaac Flores")
+        posting_controller.set_comment(post_content)
 
-        posting_post.post_feed(name, message)
-        #append post to user posts
-        user_post.append({'name': name, 'message': message})
-        #session['user_post'] = user_post
+        # Create a new document in the MongoDB collection
+        posting_controller.create_new_document()
+
+    
+    # Retrieve the last 5 posts from the database
+    last_5_posts = post.get_last_5_documents()
+
+    # Render the posting.html template and pass the posts to it
+    return render_template('posting.html', posts=last_5_posts)
 
 
-    return render_template('posting.html', user_post=user_post)
 
 # profile function - Elvin
 @app.route('/profile', methods=['GET', 'POST'])

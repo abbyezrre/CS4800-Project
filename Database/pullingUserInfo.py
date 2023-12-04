@@ -380,6 +380,15 @@ class pullingPostInfo:
         # return the result
         return timestamp
     
+    def get_last_5_documents(self):
+        # sort by the timestamp or _id field in descending order and limit to 5 documents
+        cursor = self.collection.find().sort([("timestamp", pymongo.DESCENDING)]).limit(5)
+
+        # convert the cursor to a list of documents
+        last_5_documents = list(cursor)
+
+        return last_5_documents
+    
 #Isaac Flores
 class pullingEventInfo:
      

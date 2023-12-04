@@ -4,12 +4,16 @@ from PIL import Image
 from io import BytesIO
 
 
+# post_info_instance = pullingPostInfo()
+# last_5_documents = print(post_info_instance.get_last_5_documents())
+
 # USING THE Post------------------------
 # post_info = storingPost()
+# comment = "Absolutely love Stan State! The campus is vibrant, the faculty is dedicated, and the sense of community is unparalleled. From engaging classes to exciting events, every day at Stan State feels like a new opportunity for growth and connection. Proud to be a part of this fantastic university!"
 
-# post_info.set_user("isaac")
-# post_info.set_comment("hello world")
-# ig = r"c:\Users\isaac\OneDrive\Pictures\Screenshots\Gaming-logo.PNG"
+# post_info.set_user("Helen")
+# post_info.set_comment(comment)
+# ig = r"c:\Users\isaac\OneDrive\Pictures\Screenshots\stan.PNG"
 # post_info.set_image(ig)
 
 # post_info.create_new_document()

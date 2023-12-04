@@ -1,81 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Isaac Flores -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed Posting Form</title>
     <link href="static/css/home-style.css" rel="stylesheet">
-    <link href="static/css/style.css" rel="stylesheet">
-
-
+    <link href="static/css/posting.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <nav class="navbar"> <!-- menu -->
+        <nav class="navbar">
             <ul class="list-items">
-                <li><img src="img/CSU_Stanislaus_seal.svg.png" class="logo"></li>
+                <li><img src="static/img/CSU_Stanislaus_seal.svg.png" class="logo"></li>
                 <li><a href="/" class="button">Home</a></li>
-                <li><a href="/hub" class="button">Hub</a></li>
-                <li><a href="#" class="button">Events</a></li>
+                <li><a href="/clubs" class="button">Hub</a></li>
+                <li><a href="/events" class="button">Events</a></li>
                 <li><a href="/map" class="button">Map</a></li>
-                <li><a href="#" class="button">Posting</a></li>
-
+                <li><a href="/posting" class="button">Posting</a></li>
             </ul>
             <ul class="login-item">
                 <li><a href="/profile" class="button">Profile</a></li>
                 <li><a href="/signin" class="button">Sign In</a></li>
             </ul>
-
         </nav>
+        <main>
+   
+            <div class="search">
+                <form method="POST" action="/search">
+                    <input type="text" placeholder="Search.." name="search" value="{{ request.form.search }}">
+                    <button type="submit">Go!</button>
+                </form>
+            </div>
+
+            <div id="post-area">
+                <!-- display the last 5 posts -->
+                <h2>Posts</h2>
+                <div id="last-posts">
+                    {% for post in posts %}
+                        <div class="post">
+
+                            {% if post.image_data %}
+                            <!-- Display image using base64 encoding -->
+                            <img src="data:image/png;base64,{{ post.image_data }}" alt="Post Image">
+                        {% endif %}
+                        
+                            <p><strong>{{ post.user }}</strong> - {{ post.comment }}</p>
+                            <p>Timestamp: {{ post.timestamp }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
     </div>
-
-    <h2>Post Your Feed</h2>
-
-    <form id="feedForm" method="post" action="/posting">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="message">Feed:</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <button type="submit">Post Feed</button>
-    </form>
-
-    <!-- Feed container -->
-    <div id="feedContainer">
-        <!-- Posts will be dynamically added here -->
-        {% for post in user_post %}
-        <div class="post">
-            {{ post.name }}
-            {{ post.message }}
-        </div>
-        {% endfor %}
-    </div>
-
-    <!--
-    <script>
-        function submitForm() {
-            var name = document.getElementById('name').value;
-            var message = document.getElementById('message').value;
-
-            // Create a new post element
-            var postElement = document.createElement('div');
-            postElement.className = 'post';
-            postElement.innerHTML = '<strong>' + name + ':</strong> ' + message;
-
-            // Append the post element to the feed container
-            document.getElementById('feedContainer').appendChild(postElement);
-
-            // Clear the form fields
-            document.getElementById('name').value = '';
-            document.getElementById('message').value = '';
-        }
-    </script>
--->
-
 </body>
 
 </html>
