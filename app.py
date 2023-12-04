@@ -5,14 +5,16 @@ from map import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
-from posting import posting
+from posting import PostingController
+from login import *
+from signup import *
 # create the application object
 app = Flask(__name__)
 
-# use decorators to link the function to a url
 
 @app.route('/')
 def home():
+
     return render_template('home.html', user_post=session.get('user_post'))  # render a template
 
 
@@ -20,43 +22,40 @@ def home():
 @app.route('/signin', methods=['GET', 'POST'])
 def login():
     error = None
+    user= None
     if request.method == 'POST':
-        #creating user object
-        user = User()
         #made username variable global - Elvin
         global username 
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
-        
-        #returns true or false if user exists in database
-        verifyUser = user.findUser(username)
-        
-        if verifyUser is True:
-            #redirects to homepage if passwords match
-            if user.get_password() == password:
-                return redirect(url_for('home'))
-            else:
-                error = 'Invalid Password. Please try again.'
+
+        login = loginPage(username, password)
+        login.login()
+        if login.loginStatus is True: 
+
+            return redirect(url_for('home'))
         else:
-            error = 'Invalid Username. Please try again.'
-                
+            error = login.error
+
+
     return render_template('signin.html', error=error)
 
  # map page - Abigail 
- # connects to map controller and the html        
+ # connects to map controller and the html     
+ # made changes to map function by implementing some parts of Issac's code so image pops on the page
 @app.route('/map', methods= ['GET', 'POST'])
 def map():
+    map = Map()
     
     if request.method == 'POST':
-        map = Map()
+        
     
         roomnumber = request.form.get("roomnumber")
         roomImage = map.searchMap(roomnumber)
-        
+
     else:
-        
-        roomImage = map.searchMap("Campus Map")
+        roomImage = None
         
     return render_template('map.html', img = roomImage)
 
@@ -85,52 +84,45 @@ def signup():
     #copied from signup.py, coded by Abby
     #modifications by Helen for connecting the controller to Flask
     #modifications by Helen to check if user exists in the database before user can sign up, and to check if passwords match
+    #modifications by Helen to turn it into a class
     error = None
     if request.method == 'POST':
-        
-        #create a new user
-        newUser = StoringUserInfo()
-        #create database of usernames
-        usernameList = pullingUserInfo().get_allFieldInfo('username')
-        
-        #gets input from html and stores it as username, pass1, and pass2
+        #gets input from html boxes
         username = request.form.get("username")
+        fname = request.form.get("fname")
+        lname = request.form.get("lname")
         pass1 = request.form.get("pass1")
         pass2 = request.form.get("pass2")
+        email = request.form.get("email")
+        signup = signupPage(username, fname, lname, pass1, pass2, email)
         
-        #checks to see if username is taken
-        if username in usernameList:
-            error = 'Username is taken. Try again'
+        signup.signup()
+        
+        if signup.signupStatus == True:
+            return redirect(url_for('login'))
+        
         else:
-            newUser.set_username(username)
-            newUser.set_firstname(request.form.get("fname"))
-            newUser.set_lastname(request.form.get("lname"))
-            #checks to see if passwords match
-            if pass1 == pass2:
-                newUser.set_password(request.form.get("pass1"))
-                newUser.create_new_document()
-                #redirects to login page
-                return redirect(url_for('login'))
-            else:
-                error = "Passwords don't match. Try again"
+            error = signup.error
         
-        #TO DO: uncomment out after database can store email
-        #newUser.set_(request.form.get("email"))
-    
+
     return render_template('signup.html', error=error)
     
-
+#kim - post function
 @app.route('/posting', methods=['GET', 'POST'])
 def post():
     user_post = session.get('user_post', [])
 
     if request.method == 'POST':
+        #get data from form
         name = request.form.get("name")
         message = request.form.get("message")
-        posting.post_feed(name, message)
 
+        posting_post = PostingController()
+
+        posting_post.post_feed(name, message)
+        #append post to user posts
         user_post.append({'name': name, 'message': message})
-        session['user_post'] = user_post
+        #session['user_post'] = user_post
 
 
     return render_template('posting.html', user_post=user_post)
@@ -153,6 +145,45 @@ def profile():
         #throws error if not signed in
         
         return render_template('home.html', error = "please sign in")  
+
+#  # map page - Abigail 
+#  # connects to map controller and the html        
+# @app.route('/map', methods= ['GET', 'POST'])
+# def map():
+    
+#     if request.method == 'POST':
+#         map = Map()
+    
+#         roomnumber = request.form.get("roomnumber")
+#         roomImage = map.searchMap(roomnumber)
+        
+#         if roomImage is True:
+#             return render_template('map.html', img = roomImage)
+    
+#     return render_template('map.html')
+
+# map page - Abigail
+# looked over the code since we were having problems displaying the image... adjusted the code to have the images pull from the database - Isaac
+# connects to map controller and the html 
+"""
+@app.route('/map', methods=['GET', 'POST'])
+def display_map():
+    # using the database
+    map= Map()
+    map_image_data = None
+
+    if request.method == 'POST':
+        # inserted in the html page in the searchbar
+        room_number = request.form.get('roomnumber')
+
+        # get image from database on the room number
+        map_image_data = map.searchMap(room_number)
+    else:
+        # default display without form submission (this should be the map campus)
+        map_image_data = map.searchMap("Campus Map")
+    
+    return render_template('map.html', mapimage=map_image_data)
+"""
 
 @app.route('/clubs')
 def index():

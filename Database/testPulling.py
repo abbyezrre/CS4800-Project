@@ -25,10 +25,10 @@ from io import BytesIO
 # USING THE STORING MAP------------------------
 # map_info = storingMap()
 
-# map_info.set_location("check test")
-# map_info.set_building("Demergasso-Bava Hall")
-# map_info.set_roomnumber("145")
-# ig = r"c:\Users\isaac\OneDrive\Documents\CS4800-Project\CampusConnect\static\img\CSU_Stanislaus_seal.svg.png"
+# map_info.set_location("Campus Map")
+# map_info.set_building("Campus Map")
+# map_info.set_roomnumber("Campus Map")
+# ig = r"c:\Users\isaac\OneDrive\Documents\CS4800-Project\static\img\map.png"
 # map_info.set_image(ig)
 
 # map_info.create_new_document()

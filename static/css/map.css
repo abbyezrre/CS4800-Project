@@ -9,8 +9,17 @@
   }
 
 .row {
-  display: flex;
+  content: "";
+  clear: both;
+  display: table;
   }
+
+.column {
+  float: left;
+  width: 50%
+  
+  
+}
 
 .navbar {
   display: flex;
@@ -81,24 +90,14 @@
   padding: 20px;
   }
 
-.club-cards-container {
-  display: flex;
-  overflow-x: scroll;
-  }
-
-.club-cards-container::-webkit-scrollbar-thumb {
-  background-color: red;
-  }
 .map-img {
-    width: 500px
+    width: 60%
   }
 
-.room img {
+.room-img {
+  width: 30%
   
-  width: 200px;
-  height: 200px;
-
-}
+  }
 
 .search {
     overflow: hidden;
@@ -126,4 +125,12 @@
     margin-right: 16px;
     font-size: 17px;
   }
-  
+
+    /* size of campus map image*/
+.smaller-image {
+    width: 50%;
+  }
+
+	.modal-dialog {
+    max-width: 800px;
+}
