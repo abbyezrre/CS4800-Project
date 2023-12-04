@@ -35,17 +35,15 @@
             </div>
 
             <div id="post-area">
-                <!-- display the last 5 posts -->
                 <h2>Posts</h2>
                 <div id="last-posts">
                     {% for post in posts %}
                         <div class="post">
 
                             {% if post.image_data %}
-                            <!-- Display image using base64 encoding -->
                             <img src="data:image/png;base64,{{ post.image_data }}" alt="Post Image">
                         {% endif %}
-                        
+
                             <p><strong>{{ post.user }}</strong> - {{ post.comment }}</p>
                             <p>Timestamp: {{ post.timestamp }}</p>
                         </div>
