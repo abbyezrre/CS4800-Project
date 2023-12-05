@@ -23,8 +23,13 @@
             <ul class="login-item">
                 
                 <li><a href="/profile" class="button">Profile</a></li>
-                <li><a href="/signin" class="button">Sign In</a></li>
-                <p><strong>{{error}}</strong></p> <!--For profile function - Elvin-->
+                {% if user%}
+                    <li><a href="/signout" class="button">Sign Out</a></li>
+                {% else %}
+                    <li><a href="/signin" class="button">Sign In</a></li>
+                {% endif%}
+
+                <p><strong>Error:</strong></p> {{error}} <!--For profile function - Elvin-->
             </ul>
              
         </nav>
@@ -42,8 +47,9 @@
         </div>
     
     </div>
-
-
+    {% if user%}
+    Hello {{user}}
+    {% endif%}
 </body>
 
 </html>

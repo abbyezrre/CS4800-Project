@@ -2,6 +2,7 @@
 from flask import Flask, render_template, redirect, url_for, request, session
 from user import *
 from map import *
+from uProfile import *
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
@@ -10,12 +11,14 @@ from login import *
 from signup import *
 # create the application object
 app = Flask(__name__)
-
+app.secret_key = 'super secret key'
 
 @app.route('/')
 def home():
-  
-    return render_template('home.html', user_post=session.get('user_post'))  # render a template
+    user = None
+    if session.get('username') is not None:
+        user = session.get('username')
+    return render_template('home.html',user=user, user_post=session.get('user_post'))  # render a template
 
 
 #Helen - signin
@@ -23,17 +26,18 @@ def home():
 def login():
     error = None
     user= None
+    global username
     if request.method == 'POST':
-        #made username variable global - Elvin
-        global username 
+        
+        
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
 
         login = loginPage(username, password)
-        login.login()
+        login.checkpassword()
         if login.loginStatus is True: 
-
+            session['username'] = username
             return redirect(url_for('home'))
         else:
             error = login.error
@@ -79,6 +83,11 @@ def search():
     output = sum(output,[])
     return render_template('search.html', output=output, input=input, len = len(output))
 
+@app.route('/signout', methods=['GET', 'POST'])
+def signout():
+    user=None
+    session.clear()
+    return render_template('home.html',user=user)
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     #copied from signup.py, coded by Abby
@@ -140,22 +149,39 @@ def posting():
 # profile function - Elvin
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    #pulls user info from database
-    dbase = pullingUserInfo()
+    username =session.get("username")
     
-    #so far updates user profile from datatbase, will work on edit function 
-    try :
-       
-        f = dbase.get_fullname(username)
-        b = dbase.get_bio(username)
-        update = render_template('profile.html', fullname = f, bio = b)
-        #TO DO: still need to add image and major maybe?
-        return update
-    except:
-        #throws error if not signed in
-        
-        return render_template('home.html', error = "please sign in")  
+ 
+    error = None
+    fullname = None
+    age = None
+    major = None
+    bio = None
 
+    #creates profile class
+    user = Profile(username)
+
+    
+    if username is not None:
+        
+        user.displayFullname(username)
+        fullname = user.fullname
+
+        user.displayAge(username) 
+        age = user.age
+
+        #user.displayMajor(username) - will add later
+        user.displayBio(username)
+        bio = user.bio
+
+        return render_template('profile.html', fullname = fullname, age = age, bio = bio) 
+     
+    else:
+        user.check_sign_in()
+        error = user.error
+
+        return render_template('home.html', error = error) 
+     
 #  # map page - Abigail 
 #  # connects to map controller and the html        
 # @app.route('/map', methods= ['GET', 'POST'])

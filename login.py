@@ -9,7 +9,7 @@ class loginPage:
         self.password = password
         self.error = None
         
-    def login(self):
+    def checkpassword(self):
         
         verifyUser = self.user.findUser(self.username)
         
@@ -22,9 +22,7 @@ class loginPage:
         else:
             self.error = 'Invalid Username. Please try again.'
             
-    #for passing args to profile - Elvin
-    def forProfile():
-        return userInputUsername
+  
     
    
         
