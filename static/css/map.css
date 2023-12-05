@@ -8,45 +8,29 @@
   margin-right: 10px;
   }
 
-.row {
+.column {
+  float: left;
+  width: 50%
+  padding: 5px;
+    
+  }
+
+.row::after {
   content: "";
   clear: both;
   display: table;
   }
 
-.column {
-  float: left;
-  width: 50%
-  
-  
-}
-
 .navbar {
   display: flex;
   background-color: white;
   height: 80px;
-  margin-bottom: -22px;
+  
   }
 
 .main-content {
   background-color: rgb(219, 219, 219);
   margin-bottom: 80px;
-  }
-
-.club-card {
-  margin: 10px;
-  background-color: rgb(240, 240, 240);
-  padding: 15px;
-  align-items: center;
-  }
-
-.club-img {
-  width: 200px !important;
-  }
-
-.card-titles {
-  margin-top: -20px;
-  cursor: pointer;
   }
 
 .list-items {
@@ -82,7 +66,7 @@
 .login-item {
   display: flex;
   list-style-type: none;
-  margin-left: 900px;
+  margin-left: auto;
   }
 
 .title-text {
@@ -91,13 +75,21 @@
   }
 
 .map-img {
-    width: 60%
+    width: 700px
+    
   }
 
 .room-img {
-  width: 30%
+  width: 30%;
+  cursor: pointer;
   
-  }
+}
+
+.room-img:hover {
+  opacity: 0.7;
+}
+
+
 
 .search {
     overflow: hidden;
@@ -131,6 +123,45 @@
     width: 50%;
   }
 
-	.modal-dialog {
-    max-width: 800px;
+.lightbox {
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  position: fixed;
+  z-index: 1000;
 }
+  
+.lightbox:target {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+  
+.lightbox img {
+  border-radius: 1em;
+  display: block;
+  margin: auto;
+  max-height: 80vh;
+  max-width: 90vh;
+}
+  
+.lightbox .close {
+  color: #fff;
+  font-size: 4em;
+  font-weight: bold;
+  height: 1em;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 1em;
+  z-index: 1001;
+}
+  
+  .lightbox p {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+  }
