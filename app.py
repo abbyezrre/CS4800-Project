@@ -7,11 +7,11 @@ from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
 from posting import PostingController
-from login import *
-from signup import *
+from clubs import ClubsController
 # create the application object
 app = Flask(__name__)
 app.secret_key = 'super secret key'
+# use decorators to link the function to a url
 
 @app.route('/')
 def home():
@@ -20,16 +20,14 @@ def home():
         user = session.get('username')
     return render_template('home.html',user=user, user_post=session.get('user_post'))  # render a template
 
-
 #Helen - signin
 @app.route('/signin', methods=['GET', 'POST'])
 def login():
     error = None
     user= None
-    global username
     if request.method == 'POST':
-        
-        
+        #made username variable global - Elvin
+        global username 
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
@@ -37,27 +35,24 @@ def login():
         login = loginPage(username, password)
         login.checkpassword()
         if login.loginStatus is True: 
+
             session['username'] = username
             return redirect(url_for('home'))
         else:
             error = login.error
-
-
     return render_template('signin.html', error=error)
 
  # map page - Abigail 
- # connects to map controller and the html     
- # made changes to map function by implementing some parts of Issac's code so image pops on the page
+ # connects to map controller and the html        
 @app.route('/map', methods= ['GET', 'POST'])
 def map():
-    map = Map()
     
     if request.method == 'POST':
-        
+        map = Map()
     
         roomnumber = request.form.get("roomnumber")
         roomImage = map.searchMap(roomnumber)
-
+        
     else:
         roomImage = None
         
@@ -83,11 +78,6 @@ def search():
     output = sum(output,[])
     return render_template('search.html', output=output, input=input, len = len(output))
 
-@app.route('/signout', methods=['GET', 'POST'])
-def signout():
-    user=None
-    session.clear()
-    return render_template('home.html',user=user)
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     #copied from signup.py, coded by Abby
@@ -113,39 +103,35 @@ def signup():
         else:
             error = signup.error
         
-
     return render_template('signup.html', error=error)
 
-
-# ... (previous code)
-
-# Posting route - Isaac
+    
+#kim - post function
 @app.route('/posting', methods=['GET', 'POST'])
-def posting():
+def post():
     # Instantiate the PostingController class
     posting_controller = storingPost()
     post = pullingPostInfo()
 
     if request.method == 'POST':
+    #get data from form
+        name = request.form.get("name")
+        message = request.form.get("message")
         # Get the post content from the form
         post_content = request.form.get('postContent')
 
         # Set the user and comment in the PostingController instance
         posting_controller.set_user("Isaac Flores")
         posting_controller.set_comment(post_content)
-
+    
         # Create a new document in the MongoDB collection
         posting_controller.create_new_document()
 
-    
+
     # Retrieve the last 5 posts from the database
     last_5_posts = post.get_last_5_documents()
 
-    # Render the posting.html template and pass the posts to it
     return render_template('posting.html', posts=last_5_posts)
-
-
-
 # profile function - Elvin
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
@@ -223,14 +209,16 @@ def display_map():
 
 @app.route('/clubs')
 def index():
-    user_info = pullingClubInfo()
-    clubs = [
+    clubs_controller = ClubsController()
+    clubs = clubs_controller.get_clubs_info()
+
+   # clubs = [
         #pulling the infomation from database of clubs to the website
-        {'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
-        {'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
+        #{'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
+        #{'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
   
         # Add more clubs as needed
-    ]
+    #]
     return render_template('clubs.html', clubs=clubs)
    
 # start the server with the 'run()' method
