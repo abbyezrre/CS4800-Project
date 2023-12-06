@@ -10,15 +10,15 @@ class Map:
         self.map = pullingMapInfo()
         
     #stores room info, needs to be updated so I don't have to manually insert each image    
-    def storeMap(self):
+    def storeMap(self, location, building, roomnumber, image):
         
         ig = r"bizzini1/b103.png"
         mapImage = storingMap()
         
-        mapImage.set_location("")
-        mapImage.set_building("")
-        mapImage.set_roomnumber("")
-        mapImage.set_image(ig)
+        mapImage.set_location = location
+        mapImage.set_building = building
+        mapImage.set_roomnumber = roomnumber
+        mapImage.set_image = image
         
         
         

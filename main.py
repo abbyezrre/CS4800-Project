@@ -44,18 +44,22 @@ def main():
     """
     #map testing - Abigail Ezrre
     #stores the map images into the database
-    """
     
-    mapTest.storeMap()
-    """
     mapTest = Map()
+    
+    l = input("Enter location: ")
+    build = input("Enter building: ")
+    room = input("Enter room number: ")
+    image = input("image url: ")
+    mapTest.storeMap(l, build, room, image)
+    """
     #searches for the room 
     x = input("Enter room number: ")
     mapI = mapTest.searchMap(x) 
     if mapI is True:
         print(mapI)
-    
+    """
 if __name__ == "__main__":
     main()
 
-    
+   
