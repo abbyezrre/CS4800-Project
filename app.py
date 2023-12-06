@@ -6,60 +6,59 @@ from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 from search import *
 from posting import PostingController
-from login import *
-from signup import *
+from clubs import ClubsController
 # create the application object
 app = Flask(__name__)
-app.secret_key = 'super secret key'
+
+# use decorators to link the function to a url
 
 @app.route('/')
 def home():
-    user = None
-    if session.get('username') is not None:
-        user = session.get('username')
-    return render_template('home.html',user=user, user_post=session.get('user_post'))  # render a template
+    return render_template('home.html', user_post=session.get('user_post'))  # render a template
 
 
 #Helen - signin
 @app.route('/signin', methods=['GET', 'POST'])
 def login():
     error = None
-    user= None
     if request.method == 'POST':
+        #creating user object
+        user = User()
         #made username variable global - Elvin
         global username 
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
-
-        login = loginPage(username, password)
-        login.checkpassword()
-        if login.loginStatus is True: 
-            session['username'] = username
-            return redirect(url_for('home'))
+        
+        #returns true or false if user exists in database
+        verifyUser = user.findUser(username)
+        
+        if verifyUser is True:
+            #redirects to homepage if passwords match
+            if user.get_password() == password:
+                return redirect(url_for('home'))
+            else:
+                error = 'Invalid Password. Please try again.'
         else:
-            error = login.error
-
-
+            error = 'Invalid Username. Please try again.'
+                
     return render_template('signin.html', error=error)
 
  # map page - Abigail 
- # connects to map controller and the html     
- # made changes to map function by implementing some parts of Issac's code so image pops on the page
+ # connects to map controller and the html        
 @app.route('/map', methods= ['GET', 'POST'])
 def map():
-    map = Map()
     
     if request.method == 'POST':
-        
+        map = Map()
     
         roomnumber = request.form.get("roomnumber")
         roomImage = map.searchMap(roomnumber)
-
-    else:
-        roomImage = None
         
-    return render_template('map.html', img = roomImage)
+        if roomImage is True:
+            return render_template('map.html', img = roomImage)
+    
+    return render_template('map.html')
 
 #helen - search function
 #needs the UI to be updated 
@@ -81,68 +80,64 @@ def search():
     output = sum(output,[])
     return render_template('search.html', output=output, input=input, len = len(output))
 
-@app.route('/signout', methods=['GET', 'POST'])
-def signout():
-    user=None
-    session.clear()
-    return render_template('home.html',user=user)
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     #copied from signup.py, coded by Abby
     #modifications by Helen for connecting the controller to Flask
     #modifications by Helen to check if user exists in the database before user can sign up, and to check if passwords match
-    #modifications by Helen to turn it into a class
     error = None
     if request.method == 'POST':
-        #gets input from html boxes
+        
+        #create a new user
+        newUser = StoringUserInfo()
+        #create database of usernames
+        usernameList = pullingUserInfo().get_allFieldInfo('username')
+        
+        #gets input from html and stores it as username, pass1, and pass2
         username = request.form.get("username")
-        fname = request.form.get("fname")
-        lname = request.form.get("lname")
         pass1 = request.form.get("pass1")
         pass2 = request.form.get("pass2")
-        email = request.form.get("email")
-        signup = signupPage(username, fname, lname, pass1, pass2, email)
         
-        signup.signup()
-        
-        if signup.signupStatus == True:
-            return redirect(url_for('login'))
-        
+        #checks to see if username is taken
+        if username in usernameList:
+            error = 'Username is taken. Try again'
         else:
-            error = signup.error
+            newUser.set_username(username)
+            newUser.set_firstname(request.form.get("fname"))
+            newUser.set_lastname(request.form.get("lname"))
+            #checks to see if passwords match
+            if pass1 == pass2:
+                newUser.set_password(request.form.get("pass1"))
+                newUser.create_new_document()
+                #redirects to login page
+                return redirect(url_for('login'))
+            else:
+                error = "Passwords don't match. Try again"
         
-
+        #TO DO: uncomment out after database can store email
+        #newUser.set_(request.form.get("email"))
+    
     return render_template('signup.html', error=error)
-
-
-# ... (previous code)
-
-# Posting route - Isaac
+    
+#kim - post function
 @app.route('/posting', methods=['GET', 'POST'])
-def posting():
-    # Instantiate the PostingController class
-    posting_controller = storingPost()
-    post = pullingPostInfo()
+def post():
+    user_post = session.get('user_post', [])
 
     if request.method == 'POST':
-        # Get the post content from the form
-        post_content = request.form.get('postContent')
+        #get data from form
+        name = request.form.get("name")
+        message = request.form.get("message")
 
-        # Set the user and comment in the PostingController instance
-        posting_controller.set_user("Isaac Flores")
-        posting_controller.set_comment(post_content)
+        posting_post = PostingController()
 
-        # Create a new document in the MongoDB collection
-        posting_controller.create_new_document()
-
-    
-    # Retrieve the last 5 posts from the database
-    last_5_posts = post.get_last_5_documents()
-
-    # Render the posting.html template and pass the posts to it
-    return render_template('posting.html', posts=last_5_posts)
+        posting_post.post_feed(name, message)
+        #append post to user posts
+        user_post.append({'name': name, 'message': message})
+        #session['user_post'] = user_post
 
 
+    return render_template('posting.html', user_post=user_post)
 
 # profile function - Elvin
 @app.route('/profile', methods=['GET', 'POST'])
@@ -163,55 +158,18 @@ def profile():
         
         return render_template('home.html', error = "please sign in")  
 
-#  # map page - Abigail 
-#  # connects to map controller and the html        
-# @app.route('/map', methods= ['GET', 'POST'])
-# def map():
-    
-#     if request.method == 'POST':
-#         map = Map()
-    
-#         roomnumber = request.form.get("roomnumber")
-#         roomImage = map.searchMap(roomnumber)
-        
-#         if roomImage is True:
-#             return render_template('map.html', img = roomImage)
-    
-#     return render_template('map.html')
-
-# map page - Abigail
-# looked over the code since we were having problems displaying the image... adjusted the code to have the images pull from the database - Isaac
-# connects to map controller and the html 
-"""
-@app.route('/map', methods=['GET', 'POST'])
-def display_map():
-    # using the database
-    map= Map()
-    map_image_data = None
-
-    if request.method == 'POST':
-        # inserted in the html page in the searchbar
-        room_number = request.form.get('roomnumber')
-
-        # get image from database on the room number
-        map_image_data = map.searchMap(room_number)
-    else:
-        # default display without form submission (this should be the map campus)
-        map_image_data = map.searchMap("Campus Map")
-    
-    return render_template('map.html', mapimage=map_image_data)
-"""
-
 @app.route('/clubs')
 def index():
-    user_info = pullingClubInfo()
-    clubs = [
+    clubs_controller = ClubsController()
+    clubs = clubs_controller.get_clubs_info()
+
+   # clubs = [
         #pulling the infomation from database of clubs to the website
-        {'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
-        {'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
+        #{'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
+        #{'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
   
         # Add more clubs as needed
-    ]
+    #]
     return render_template('clubs.html', clubs=clubs)
    
 # start the server with the 'run()' method
