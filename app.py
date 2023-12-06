@@ -184,7 +184,7 @@ def index():
     ]
     # for club in clubs: 
     #     print(f"Club: {club['name']}, Image Path: {club['logo']}")
-    # return render_template('clubs.html', clubs=clubs)
+    return render_template('clubs.html', clubs=clubs)
    
 # start the server with the 'run()' method
 if __name__ == '__main__':
