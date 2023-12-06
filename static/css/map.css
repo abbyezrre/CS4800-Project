@@ -64,21 +64,41 @@
   }
 
 .login-item {
-  display: flex;
-  list-style-type: none;
-  margin-left: auto;
-  }
+    display: flex;
+    list-style-type: none;
+    margin-left: auto; 
+}
+
+.login-item .button {
+    display: inline-block;
+    background-color: rgb(238, 238, 238);
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    margin-left: 10px; 
+}
+
+.login-item .button:hover {
+    background-color: rgb(210, 21, 21);
+    color: white;
+}
 
 .title-text {
   margin-bottom: 30px;
   padding: 20px;
   align: left;
+
   }
 
 .map-img {
-    width: 700px
-    
+  width: 700px
+  cursor: pointer;
   }
+
+.map-img:hover {
+  opacity: 0.7;
+}
 
 .room-img {
   width: 30%;

@@ -47,11 +47,7 @@ def main():
     
     mapTest = Map()
     
-    l = input("Enter location: ")
-    build = input("Enter building: ")
-    room = input("Enter room number: ")
-    image = input("image url: ")
-    mapTest.storeMap(l, build, room, image)
+    mapTest.storeMap()
     """
     #searches for the room 
     x = input("Enter room number: ")
