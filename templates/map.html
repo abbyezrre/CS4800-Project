@@ -38,10 +38,20 @@
                 <div class= "column">
                 <!--room image pops up when it is searched-->
                 {% if img %}
-                <img  src = "data:image/png;base64, {{img}}" alt="Not Found" class= "room-img" >
-                {% endif %} 
+                <a href = "#room">
+                    <img  align = "right" src = "data:image/png;base64, {{img}}" alt="Not Found" class= "room-img" >
+                </a>
+                
+                {% endif %}
+                <!--when image is clicked it enlarges the image-->
+                <div class="lightbox" id="room">
+                    <a href="#" class="close">&times;</a>
+                    <div class="content">
+                      <img src="data:image/png;base64, {{img}}" />
+                    </div>
                 </div>
-            </div>                    
+                </div>
+            </div>  
 
             <form action="" method="POST">
             <div class="search"> <!-- search bar -->
@@ -50,6 +60,8 @@
 
             </form>
         </div>
+
+        
     </div>
 
 </body>

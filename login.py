@@ -22,9 +22,7 @@ class loginPage:
         else:
             self.error = 'Invalid Username. Please try again.'
             
-    #for passing args to profile - Elvin
-    def forProfile():
-        return userInputUsername
+  
     
    
         
