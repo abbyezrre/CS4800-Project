@@ -68,6 +68,99 @@ from io import BytesIO
 # print(user_info.get_image("Gaming"))
 # print(user_info.get_timestamp("Gaming"))
 
+#theatre club
+#user_info = storingEvents()
+#user_info.set_club("Theatre")
+#user_info.set_location("D100")
+#user_info.set_date("12/11/23")
+#user_info.set_time("4:00pm")
+#user_info.set_contact("stanstatetheatre@gmail.com")
+#user_info.set_title("theatre auditions")
+#info = "We will be holding auditions around 4pm for our newest play. Audition before spots get filled."
+#user_info.set_eventinfo(info)
+#ig = r"C:\Users\exofa\OneDrive\Pictures\Screenshots\theatre_club.png"
+#user_info.set_image("static/img/theatre_club.png")
+
+#user_info.create_new_document()
+#user_info = pullingEventInfo()
+#print(user_info.get_club("Theatre"))
+#print(user_info.get_location("Theatre"))
+#print(user_info.get_date("Theatre"))
+#print(user_info.get_time("Theatre"))
+#print(user_info.get_eventinfo("Theatre"))
+#print(user_info.get_image("Theatre"))
+#print(user_info.get_timestamp("Theatre"))
+
+#anthropology club
+#user_info = storingEvents()
+#user_info.set_club("Anthropology")
+#user_info.set_location("B100")
+#user_info.set_date("12/01/23")
+#user_info.set_time("3:00pm")
+#user_info.set_contact("stanstateanthropology@gmail.com")
+#user_info.set_title("anthropology event")
+#info = "We will be holding our event around 3pm."
+#user_info.set_eventinfo(info)
+#ig = r"C:\Users\exofa\OneDrive\Pictures\Screenshots\anthropology_club.jpg"
+#user_info.set_image(ig)
+
+#user_info.create_new_document()
+#user_info = pullingEventInfo()
+#print(user_info.get_club("Anthropology"))
+#print(user_info.get_location("Anthropology"))
+#print(user_info.get_date("Anthropology"))
+#print(user_info.get_time("Anthropology"))
+#print(user_info.get_eventinfo("Anthropology"))
+#print(user_info.get_image("Anthropology"))
+#print(user_info.get_timestamp("Anthropology"))
+
+#women's club
+#user_info = storingEvents()
+#user_info.set_club("Women's Club")
+#user_info.set_location("B100")
+#user_info.set_date("12/21/23")
+#user_info.set_time("1:00pm")
+#user_info.set_contact("stanstatewomensclub@gmail.com")
+#user_info.set_title("women's club event")
+#info = "We will be holding our event around 1pm."
+#user_info.set_eventinfo(info)
+#ig = r"C:\Users\exofa\OneDrive\Pictures\Screenshots\womensclub.jpeg"
+#user_info.set_image(ig)
+
+#user_info.create_new_document()
+#user_info = pullingEventInfo()
+#print(user_info.get_club("Women's Club"))
+#print(user_info.get_location("Women's Club"))
+#print(user_info.get_date("Women's Club"))
+#print(user_info.get_time("Women's Club"))
+#print(user_info.get_eventinfo("Women's Club"))
+#print(user_info.get_image("Women's Club"))
+#print(user_info.get_timestamp("Women's Club"))
+
+#math club
+#user_info = storingEvents()
+#user_info.set_club("Math")
+#user_info.set_location("B100")
+#user_info.set_date("02/21/24")
+#user_info.set_time("1:30pm")
+#user_info.set_contact("stanstatemath@gmail.com")
+#user_info.set_title("math event")
+#info = "We will be holding math our event around 1:30pm."
+#user_info.set_eventinfo(info)
+#ig = r"C:\Users\exofa\OneDrive\Pictures\Screenshots\default_club_img.png"
+#user_info.set_image(ig)
+
+#user_info.create_new_document()
+#user_info = pullingEventInfo()
+#print(user_info.get_club("Math"))
+#print(user_info.get_location("Math"))
+#print(user_info.get_date("Math"))
+#print(user_info.get_time("Math"))
+#print(user_info.get_eventinfo("Math"))
+#print(user_info.get_image("Math"))
+#print(user_info.get_timestamp("Math"))
+
+
 #Isaac Flores
 # START - testing if I am able to pull information fromt he data base
 

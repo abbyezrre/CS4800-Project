@@ -22,19 +22,16 @@ def home():
 @app.route('/signin', methods=['GET', 'POST'])
 def login():
     error = None
-<<<<<<< HEAD
     if request.method == 'POST':
         #creating user object
         user = User()
         #made username variable global - Elvin
         global username 
-=======
     user= None
     global username
     if request.method == 'POST':
         
         
->>>>>>> fb70b7bed65a2d05232431274408ecad2dce5ab6
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
@@ -160,72 +157,6 @@ def profile():
     major = None
     bio = None
 
-<<<<<<< HEAD
-=======
-    #creates profile class
-    user = Profile(username)
-
-    
-    if username is not None:
-        
-        user.displayFullname(username)
-        fullname = user.fullname
-
-        user.displayAge(username) 
-        age = user.age
-
-        #user.displayMajor(username) - will add later
-        user.displayBio(username)
-        bio = user.bio
-
-        return render_template('profile.html', fullname = fullname, age = age, bio = bio) 
-     
-    else:
-        user.check_sign_in()
-        error = user.error
-
-        return render_template('home.html', error = error) 
-     
-#  # map page - Abigail 
-#  # connects to map controller and the html        
-# @app.route('/map', methods= ['GET', 'POST'])
-# def map():
-    
-#     if request.method == 'POST':
-#         map = Map()
-    
-#         roomnumber = request.form.get("roomnumber")
-#         roomImage = map.searchMap(roomnumber)
-        
-#         if roomImage is True:
-#             return render_template('map.html', img = roomImage)
-    
-#     return render_template('map.html')
-
-# map page - Abigail
-# looked over the code since we were having problems displaying the image... adjusted the code to have the images pull from the database - Isaac
-# connects to map controller and the html 
-"""
-@app.route('/map', methods=['GET', 'POST'])
-def display_map():
-    # using the database
-    map= Map()
-    map_image_data = None
-
-    if request.method == 'POST':
-        # inserted in the html page in the searchbar
-        room_number = request.form.get('roomnumber')
-
-        # get image from database on the room number
-        map_image_data = map.searchMap(room_number)
-    else:
-        # default display without form submission (this should be the map campus)
-        map_image_data = map.searchMap("Campus Map")
-    
-    return render_template('map.html', mapimage=map_image_data)
-"""
-
->>>>>>> fb70b7bed65a2d05232431274408ecad2dce5ab6
 @app.route('/clubs')
 def index():
     clubs_controller = ClubsController()
@@ -238,6 +169,8 @@ def index():
   
         # Add more clubs as needed
     #]
+    for club in clubs: 
+        print(f"Club: {club['name']}, Image Path: {club['logo']}")
     return render_template('clubs.html', clubs=clubs)
    
 # start the server with the 'run()' method

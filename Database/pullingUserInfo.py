@@ -244,13 +244,13 @@ class pullingClubInfo:
         image_data = self.get_clubInfo(field_filter, club)
 
         return image_data
-        #if image_data:
+        if image_data:
         #     # decode the base64 image data
-        #    decoded_image_data = base64.b64decode(image_data)
+            decoded_image_data = base64.b64decode(image_data)
 
         #     # open and display the image using PIL
-        #    image = Image.open(BytesIO(decoded_image_data))
-        #    image.show()
+            image = Image.open(BytesIO(decoded_image_data))
+            image.show()
 
     # method to return the title
     def get_title(self, club): 
