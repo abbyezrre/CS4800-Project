@@ -6,16 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link href="static/css/home.css" rel="stylesheet">
+    <link href="static/css/home-style.css" rel="stylesheet">
+    <link href="static/css/posting.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
-        <nav class="navbar"> <!-- menu -->
+        <nav class="navbar">
             <ul class="list-items">
-                <li><a href="#" class="button">Home</a></li>
+                <li><img src="static/img/CSU_Stanislaus_seal.svg.png" class="logo"></li>
+                <li><a href="/" class="button">Home</a></li>
                 <li><a href="/clubs" class="button">Hub</a></li>
-                <li><a href="#" class="button">Events</a></li>
+                <li><a href="/events" class="button">Events</a></li>
                 <li><a href="/map" class="button">Map</a></li>
                 <li><a href="/posting" class="button">Posting</a></li>
             </ul>
@@ -29,27 +31,30 @@
                     <li><a href="/signin" class="button">Sign In</a></li>
                 {% endif%}
 
+                {% if error%}
                 <p><strong>Error:</strong></p> {{error}} <!--For profile function - Elvin-->
+                {% endif%}
             </ul>
-             
         </nav>
-        <div class="main-content">
-
+        <main>
+   
             <div class="search">
                 <form method="POST" action="/search">
-                    <input type="text" placeholder="Search.." name="search" value="{{request.form.search }}">
-                    <button type="submit">Go!</button></a>
+                    <input type="text" placeholder="Search.." name="search" value="{{ request.form.search }}">
+                    <button type="submit">Go!</button>
                 </form>
             </div>
 
 
-            
-        </div>
-    
+        </main>
+       
     </div>
+    <br>
+
     {% if user%}
-    Hello {{user}}
+    <h1>Hello {{user}}</h1>
     {% endif%}
+
 </body>
 
 </html>
