@@ -180,7 +180,7 @@ def index():
         {'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
         {'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
   
-        Add more clubs as needed
+        #Add more clubs as needed
     ]
     # for club in clubs: 
     #     print(f"Club: {club['name']}, Image Path: {club['logo']}")
