@@ -18,6 +18,8 @@ app.secret_key = 'super secret key'
 @app.route('/')
 def home():
     user = None
+    #helen
+    # if user is logged in, show "hello FirstName" of the user
     if session.get('username') is not None:
         user = session.get('username')
         username = User()
@@ -31,25 +33,23 @@ def home():
 @app.route('/signin', methods=['GET', 'POST'])
 def login():
     error = None
-    if request.method == 'POST':
-        #creating user object
-        user = User()
-        #made username variable global - Elvin
-        global username 
-    user= None
+    #made username variable global - Elvin
     global username
     if request.method == 'POST':
-        
         
         #pulling info from html input
         username = request.form.get("username")
         password = request.form.get("password")
 
+        #creating login class
         login = loginPage(username, password)
+        #checks to see if passwords match
         login.checkpassword()
+        #if logins match, username is saved in the session and user is redirected to the home page
         if login.loginStatus is True: 
             session['username'] = username
             return redirect(url_for('home'))
+        #shows login error 
         else:
             error = login.error
 
@@ -90,7 +90,7 @@ def search():
         #appends array with first name and last name of user
         output.append(searching.output)
         input += searchInput
- 
+        #if it finds a match for a club, itll display the club image
         if searching.clubValid == True:
             clubImage = searching.getClubImage(searchInput)
         else:
@@ -121,6 +121,7 @@ def signup():
         pass1 = request.form.get("pass1")
         pass2 = request.form.get("pass2")
         email = request.form.get("email")
+        #creating signup class with
         signup = signupPage(username, fname, lname, pass1, pass2, email)
         
         signup.signup()
@@ -162,6 +163,8 @@ def posting():
     # Render the posting.html template and pass the posts to it
     return render_template('posting.html', posts=last_5_posts)
 
+
+
 # profile function - Elvin
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
@@ -173,6 +176,32 @@ def profile():
     age = None
     major = None
     bio = None
+
+    #creates profile class
+    user = Profile(username)
+
+    
+    if username is not None:
+        
+        user.displayFullname(username)
+        fullname = user.fullname
+
+        user.displayAge(username) 
+        age = user.age
+
+        #user.displayMajor(username) - will add later
+        user.displayBio(username)
+        bio = user.bio
+
+        return render_template('profile.html', fullname = fullname, age = age, bio = bio) 
+     
+    else:
+        user.check_sign_in()
+        error = user.error
+
+        return render_template('home.html', error = error) 
+     
+
 
 @app.route('/clubs')
 def index():
