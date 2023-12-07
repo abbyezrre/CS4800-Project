@@ -78,8 +78,8 @@ from io import BytesIO
 #user_info.set_title("theatre auditions")
 #info = "We will be holding auditions around 4pm for our newest play. Audition before spots get filled."
 #user_info.set_eventinfo(info)
-#ig = r"C:\Users\exofa\OneDrive\Pictures\Screenshots\theatre_club.png"
-#user_info.set_image("static/img/theatre_club.png")
+#ig = r"C:\Users\exofa\projects\CS4800-Project\static\img\blank-profile.png"
+#user_info.set_image(ig)
 
 #user_info.create_new_document()
 #user_info = pullingEventInfo()

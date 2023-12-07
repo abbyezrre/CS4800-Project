@@ -9,6 +9,8 @@ from search import *
 from posting import PostingController
 from login import *
 from signup import *
+from clubs import ClubsController
+
 # create the application object
 app = Flask(__name__)
 app.secret_key = 'super secret key'
@@ -174,16 +176,17 @@ def profile():
 
 @app.route('/clubs')
 def index():
-    user_info = pullingClubInfo()
-    clubs = [
+    clubs_controller = ClubsController()
+    clubs = clubs_controller.get_clubs_info()
+    #user_info = pullingClubInfo()
+    #clubs = [
         # pulling the infomation from database of clubs to the website
-        {'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
-        {'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
-  
+        #{'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
+        #{'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
+        #{'name': 'Theatre', 'description': user_info.get_eventinfo("Theatre"), 'contact': user_info.get_contact("Theatre"), 'logo': user_info.get_image("Theatre")}
         #Add more clubs as needed
-    ]
-    # for club in clubs: 
-    #     print(f"Club: {club['name']}, Image Path: {club['logo']}")
+    #]
+
     return render_template('clubs.html', clubs=clubs)
    
 # start the server with the 'run()' method
