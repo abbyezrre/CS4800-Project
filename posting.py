@@ -1,31 +1,32 @@
-from user import *
-from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 
 class PostingController:
     def __init__(self):
-        self.user_post = []
-        self.storing_post = storingPost()
-        self.pulling_post = pullingPostInfo()
-    
-    #set user for the post
-    def set_user(self, name):
-        self.storing_post.set_user = name
+        # instead of creating a new instance of pullingPostInfo, use the existing instance
+        self.post = pullingPostInfo()
 
-    #function to check if user is set
-    def post_feed(self, name, message):
-        if self.storing_post.set_user is None:
-            print("User required.")
 
-        self.storing_post.set_comment(message)
-        self.storing_post.create_new_document()
+        # access the collection from the pullingPostInfo instance
+        self.collection = self.post.collection
 
-        self.user_post.append({'name': name, 'message': message})
 
-    #get user post if a user is set
-    def get_user_post(self):
-        if self.user is not None:
-            user_posts = self.pulling_post.get_user_posts(self.user)
-            self.user_post = user_posts
-        return self.user_post
+    def get_last_5_documents(self):
+        # sort by the timestamp field in descending order and limit to 5 documents
+        cursor = self.collection.find().sort("timestamp", pymongo.DESCENDING).limit(5)
+
+
+        # convert the cursor to a list of documents
+        last_5_documents = list(cursor)
+
+
+        return last_5_documents
+   
+# just testing it works properly
+# # instantiate the PostingController class
+# posting_controller = PostingController()
+
+
+# # call the get_last_5_documents method and print the result
+# print(posting_controller.get_last_5_documents())
+
     

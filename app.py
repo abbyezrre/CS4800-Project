@@ -136,32 +136,21 @@ def signup():
     return render_template('signup.html', error=error)
 
 
-# ... (previous code)
 
-# Posting route - Isaac
+# posting route - Isaac
 @app.route('/posting', methods=['GET', 'POST'])
 def posting():
-    # Instantiate the PostingController class
-    posting_controller = storingPost()
-    post = pullingPostInfo()
+    # instantiate the PostingController class
+    posting_controller = PostingController()
 
-    if request.method == 'POST':
-        # Get the post content from the form
-        post_content = request.form.get('postContent')
 
-        # Set the user and comment in the PostingController instance
-        posting_controller.set_user("Isaac Flores")
-        posting_controller.set_comment(post_content)
+    # retrieve the last 5 posts from the database using the correct method
+    last_5_posts = posting_controller.get_last_5_documents()
 
-        # Create a new document in the MongoDB collection
-        posting_controller.create_new_document()
 
-    
-    # Retrieve the last 5 posts from the database
-    last_5_posts = post.get_last_5_documents()
-
-    # Render the posting.html template and pass the posts to it
+    # render the posting.html template and pass the posts to it
     return render_template('posting.html', posts=last_5_posts)
+
 
 
 
