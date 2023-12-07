@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Search Results</title>
-        <link href="static/css/home-style.css" rel="stylesheet">
-        <link href="static/css/posting.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <nav class="navbar">
-                <ul class="list-items">
-                    <li><img src="static/img/CSU_Stanislaus_seal.svg.png" class="logo"></li>
-                    <li><a href="/" class="button">Home</a></li>
-                    <li><a href="/clubs" class="button">Hub</a></li>
-                    <li><a href="/events" class="button">Events</a></li>
-                    <li><a href="/map" class="button">Map</a></li>
-                    <li><a href="/posting" class="button">Posting</a></li>
-                </ul>
-                
-                <ul class="login-item">
-                    
-                    <li><a href="/profile" class="button">Profile</a></li>
-                    {% if user%}
-                        <li><a href="/signout" class="button">Sign Out</a></li>
-                    {% else %}
-                        <li><a href="/signin" class="button">Sign In</a></li>
-                    {% endif%}
-    
-                    {% if error%}
-                    <p><strong>Error:</strong></p> {{error}} <!--For profile function - Elvin-->
-                    {% endif%}
-                </ul>
-            </nav>
-            <main>
-       
-                <div class="search">
-                    <form method="POST" action="/search">
-                        <input type="text" placeholder="Search.." name="search" value="{{ request.form.search }}">
-                        <button type="submit">Go!</button>
-                    </form>
-                </div>
-            </main>
-        </div>
 
-        <h1>Search Results for {{ input }} </h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link href="static/css/home-style.css" rel="stylesheet">
+    <link href="static/css/posting.css" rel="stylesheet">
+</head>
 
-        <!-- for loop that goes through the output array and prints them one line per item-->
-        {% for i in range(0, len)%}
-        
-            <ul>{{ output[i] }}</ul>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <ul class="list-items">
+                <li><img src="static/img/CSU_Stanislaus_seal.svg.png" class="logo"></li>
+                <li><a href="/" class="button">Home</a></li>
+                <li><a href="/clubs" class="button">Hub</a></li>
+                <li><a href="/events" class="button">Events</a></li>
+                <li><a href="/map" class="button">Map</a></li>
+                <li><a href="/posting" class="button">Posting</a></li>
+            </ul>
 
-        {% endfor %}
+            <ul class="login-item">
+
+                <li><a href="/profile" class="button">Profile</a></li>
+                {% if user%}
+                <li><a href="/signout" class="button">Sign Out</a></li>
+                {% else %}
+                <li><a href="/signin" class="button">Sign In</a></li>
+                {% endif%}
+
+                {% if error%}
+                <p><strong>Error:</strong></p> {{error}} <!--For profile function - Elvin-->
+                {% endif%}
+            </ul>
+        </nav>
+        <main>
+
+            <div class="search">
+                <form method="POST" action="/search">
+                    <input type="text" placeholder="Search.." name="search" value="{{ request.form.search }}">
+                    <button type="submit">Go!</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <h1>Search Results for {{ input }} </h1>
+
+    <!-- for loop that goes through the output array and prints them one line per item-->
+    {% for i in range(0, len)%}
+
+    <ul>{{ output[i] }}</ul>
+
+    {% endfor %}
 
 
-        <div class="post">
+    <div class="post">
         {% if img %}
 
-            <img src="data:image/png;base64,{{img}}" alt="Club Image">
-        
+        <img src="data:image/png;base64,{{img}}" alt="Club Image">
+
         {% endif %}
-        </div>
-        <script src="" async defer></script>
-    </body>
+    </div>
+    <script src="" async defer></script>
+</body>
+
 </html>

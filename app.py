@@ -9,7 +9,7 @@ from search import *
 from posting import PostingController
 from login import *
 from signup import *
-from clubs import ClubsController
+#from clubs import ClubsController
 
 # create the application object
 app = Flask(__name__)
@@ -194,16 +194,33 @@ def profile():
 
 @app.route('/clubs')
 def index():
-    clubs_controller = ClubsController()
-    clubs = clubs_controller.get_clubs_info()
-    #user_info = pullingClubInfo()
-    #clubs = [
+    #clubs_controller = ClubsController()
+    #clubs = clubs_controller.get_clubs_info()
+    user_info = pullingClubInfo()
+    clubs = [
         # pulling the infomation from database of clubs to the website
-        #{'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
-        #{'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
-        #{'name': 'Theatre', 'description': user_info.get_eventinfo("Theatre"), 'contact': user_info.get_contact("Theatre"), 'logo': user_info.get_image("Theatre")}
+        {'name': user_info.get_club("Computer Science") , 'description': user_info.get_eventinfo("Computer Science") , 'contact': user_info.get_contact("Computer Science"), 'logo': user_info.get_image("Computer Science")},
+        {'name': user_info.get_club("Gaming") , 'description': user_info.get_eventinfo("Gaming") , 'contact': user_info.get_contact("Gaming"), 'logo': user_info.get_image("Gaming")},
+        {'name': user_info.get_club("Theatre"), 'description': user_info.get_eventinfo("Theatre"), 'contact': user_info.get_contact("Theatre"), 'logo': user_info.get_image("Theatre")},
+        {'name': user_info.get_club("Anthropology"), 'description': user_info.get_eventinfo("Anthropology"), 'contact': user_info.get_contact("Anthropology"), 'logo': user_info.get_image("Anthropology")},
+        {'name': user_info.get_club("Women's Club"), 'description': user_info.get_eventinfo("Women's Club"), 'contact': user_info.get_contact("Women's Club"), 'logo': user_info.get_image("Women's Club")},
+        {'name': user_info.get_club("Math"), 'description': user_info.get_eventinfo("Math"), 'contact': user_info.get_contact("Math"), 'logo': user_info.get_image("Math")},
+        {'name': user_info.get_club("SIAM"), 'description': user_info.get_eventinfo("SIAM"), 'contact': user_info.get_contact("SIAM"), 'logo': user_info.get_image("SIAM")},
+        {'name': user_info.get_club("Accounting & Finance"), 'description': user_info.get_eventinfo("Accounting & Finance"), 'contact': user_info.get_contact("Accounting & Finance"), 'logo': user_info.get_image("Accounting & Finance")},
+        {'name': user_info.get_club("Black Student Union"), 'description': user_info.get_eventinfo("Black Student Union"), 'contact': user_info.get_contact("Black Student Union"), 'logo': user_info.get_image("Black Student Union")},
+        {'name': user_info.get_club("Geography"), 'description': user_info.get_eventinfo("Geography"), 'contact': user_info.get_contact("Geography"), 'logo': user_info.get_image("Geography")},
+        {'name': user_info.get_club("NASA"), 'description': user_info.get_eventinfo("NASA"), 'contact': user_info.get_contact("NASA"), 'logo': user_info.get_image("NASA")},
+        {'name': user_info.get_club("Photography"), 'description': user_info.get_eventinfo("Photography"), 'contact': user_info.get_contact("Photography"), 'logo': user_info.get_image("Photography")},
+        {'name': user_info.get_club("Pre-dental Society"), 'description': user_info.get_eventinfo("Pre-dental Society"), 'contact': user_info.get_contact("Pre-dental Society"), 'logo': user_info.get_image("Pre-dental Society")},
+        {'name': user_info.get_club("Sociology"), 'description': user_info.get_eventinfo("Sociology"), 'contact': user_info.get_contact("Sociology"), 'logo': user_info.get_image("Sociology")},
+        {'name': user_info.get_club("The Outlet"), 'description': user_info.get_eventinfo("The Outlet"), 'contact': user_info.get_contact("The Outlet"), 'logo': user_info.get_image("The Outlet")},
+        {'name': user_info.get_club("Warriors Chemistry"), 'description': user_info.get_eventinfo("Warriors Chemistry"), 'contact': user_info.get_contact("Warriors Chemistry"), 'logo': user_info.get_image("Warriors Chemistry")},
+        {'name': user_info.get_club("InterVarsity Christian Fellowship"), 'description': user_info.get_eventinfo("InterVarsity Christian Fellowship"), 'contact': user_info.get_contact("InterVarsity Christian Fellowship"), 'logo': user_info.get_image("InterVarsity Christian Fellowship")},
+        {'name': user_info.get_club("Language"), 'description': user_info.get_eventinfo("Language"), 'contact': user_info.get_contact("Language"), 'logo': user_info.get_image("Language")},
+        {'name': user_info.get_club("Honors Endeavor"), 'description': user_info.get_eventinfo("Honors Endeavor"), 'contact': user_info.get_contact("Honors Endeavor"), 'logo': user_info.get_image("Honors Endeavor")},
+        {'name': user_info.get_club("Eco Warriors"), 'description': user_info.get_eventinfo("Eco Warriors"), 'contact': user_info.get_contact("Eco Warriors"), 'logo': user_info.get_image("Eco Warriors")},
         #Add more clubs as needed
-    #]
+    ]
 
     return render_template('clubs.html', clubs=clubs)
    
