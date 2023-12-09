@@ -1,4 +1,6 @@
-#helen
+# written by: helen
+# tested by: helen
+# debugged by: helen
 from Database.pullingUserInfo import *
 
 # this class creates the user object and stores username, pass, email, etc.

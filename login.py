@@ -1,4 +1,6 @@
-#helen
+# written by: helen
+# tested by: helen
+# debugged by: helen
 from user import *
 class loginPage:
     

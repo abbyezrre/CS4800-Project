@@ -1,6 +1,6 @@
-# written by: Isaac (posting & club)
-# tested by: Isaac (posting $ clubs)
-# debugged by: Isaac (posting & club)
+# written by: Isaac (posting & club), Helen (login, signup, search), Abby (map), Elvin (profile), Kim (club)
+# tested by: Isaac (posting $ clubs), Helen (login, signup, search), Abby (map), Elvin (profile), Kim (club)
+# debugged by: Isaac (posting & club, map), Helen (login, signup, search, profile), Abby (map, clubs), Elvin (profile)
 
 # import the Flask class from the flask module
 from flask import Flask, render_template, redirect, url_for, request, session
@@ -13,7 +13,7 @@ from search import *
 from posting import PostingController
 from login import *
 from signup import *
-#from clubs import ClubsController
+
 
 # create the application object
 app = Flask(__name__)

@@ -1,5 +1,7 @@
 # Map controller to search for specific room building
-#Abigail
+#written by: Abigail
+#tested by: Abigail
+#debugged by: Abigail
 from user import *
 from Database.StoringUserInfo import *
 class Map:

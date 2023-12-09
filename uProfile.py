@@ -1,4 +1,6 @@
-#Elvin
+# written by: elvin
+# tested by: elvin
+# debugged by: elvin and helen
 
 from login import *
 from Database.StoringUserInfo import *

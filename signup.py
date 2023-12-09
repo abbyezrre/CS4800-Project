@@ -1,5 +1,7 @@
-# Abigail 
-#modified by Helen to make it work with Flask, to add all fields required for signup, and to check for unique usernames
+
+# written by: abigail and helen
+# tested by: helen
+# debugged by: helen
 from Database.StoringUserInfo import *
 from Database.pullingUserInfo import *
 

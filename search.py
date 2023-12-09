@@ -1,3 +1,6 @@
+# written by: helen
+# tested by: helen
+# debugged by: helen
 
 from user import *
 from Database.pullingUserInfo import *

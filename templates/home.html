@@ -25,6 +25,7 @@
             <ul class="login-item">
                 
                 <li><a href="/profile" class="button">Profile</a></li>
+                <!--helen - checks if user is logged in or not-->
                 {% if user%}
                     <li><a href="/signout" class="button">Sign Out</a></li>
                 {% else %}
@@ -50,7 +51,7 @@
        
     </div>
     <br>
-
+    <!--helen-->
     {% if user%}
     <h1>Hello {{user}}</h1>
     {% endif%}
