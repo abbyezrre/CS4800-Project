@@ -2,6 +2,9 @@ import pymongo
 import base64  
 from PIL import Image
 from io import BytesIO
+# written by: Isaac
+# tested by: Isaac
+# debugged by: Isaac
 
 #Isaac Flores
 class pullingUserInfo:

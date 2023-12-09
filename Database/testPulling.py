@@ -2,7 +2,9 @@ from StoringUserInfo import *
 from pullingUserInfo import *
 from PIL import Image
 from io import BytesIO
-
+# written by: Isaac
+# tested by: Isaac
+# debugged by: Isaac
 
 # post_info_instance = pullingPostInfo()
 # last_5_documents = print(post_info_instance.get_last_5_documents())

@@ -1,6 +1,9 @@
 import pymongo
 import base64
 from datetime import datetime
+# written by: Isaac
+# tested by: Isaac
+# debugged by: Isaac
 
 #Isaac Flores
 class StoringUserInfo:

@@ -1,3 +1,6 @@
+# written by: Isaac
+# tested by: Isaac
+# debugged by: Isaac
 from Database.pullingUserInfo import *
 
 class PostingController:
@@ -21,12 +24,4 @@ class PostingController:
 
         return last_5_documents
    
-# just testing it works properly
-# # instantiate the PostingController class
-# posting_controller = PostingController()
-
-
-# # call the get_last_5_documents method and print the result
-# print(posting_controller.get_last_5_documents())
-
     

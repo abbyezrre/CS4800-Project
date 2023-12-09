@@ -1,3 +1,7 @@
+# written by: Isaac (posting & club)
+# tested by: Isaac (posting $ clubs)
+# debugged by: Isaac (posting & club)
+
 # import the Flask class from the flask module
 from flask import Flask, render_template, redirect, url_for, request, session
 from user import *
